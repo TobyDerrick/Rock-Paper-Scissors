@@ -15,7 +15,7 @@ func start_battle(char_stats: CharacterStats) -> void:
 	draw_starting_hand(character.starting_cards)
 	start_turn()
 
-func start_turn() -> void:
+func start_turn(_prev_round_win_state: GlobalEnums.round_result = GlobalEnums.round_result.WIN) -> void:
 	draw_cards(character.cards_per_turn)
 	
 func draw_card() -> void:

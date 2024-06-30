@@ -22,13 +22,20 @@ func handle_comparison():
 	while not player_card_stack.card_stack.is_empty() or not enemy_card_stack.card_stack.is_empty():
 		compare_next_card()
 		await get_tree().create_timer(COMPARISON_INTERVAL).timeout
-	
 	#all cards compared
-	Events.finished_comparing_stacks.emit()
+	
+	Events.finished_comparing_stacks.emit(determine_winner())
 	
 func compare_next_card():
-		var player_top_card: CardUI = player_card_stack.card_stack.front()
-		var enemy_top_card: CardUI = enemy_card_stack.card_stack.front()
+	
+		var player_top_card: CardUI
+		var enemy_top_card: CardUI
+		
+		if not player_card_stack.card_stack.is_empty():
+			player_top_card = player_card_stack.card_stack.front()
+		
+		if not enemy_card_stack.card_stack.is_empty():
+			enemy_top_card = enemy_card_stack.card_stack.front()
 		
 		match compare_cards(player_top_card, enemy_top_card):
 			hand_comparison_results.WIN:
@@ -62,3 +69,14 @@ func compare_cards(card1, card2) -> hand_comparison_results:
 	else:
 		#draw
 		return hand_comparison_results.DRAW
+
+func determine_winner() -> GlobalEnums.round_result:
+	if comparison_score < 0:
+		return GlobalEnums.round_result.LOSE
+	
+	elif comparison_score > 0 :
+		return GlobalEnums.round_result.WIN
+	
+	else:
+		return GlobalEnums.round_result.DRAW
+	

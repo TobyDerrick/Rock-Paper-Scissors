@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=24 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_brain.gd" id="7_odcnd"]
 [ext_resource type="Script" path="res://SCENES/Battle/card_comparison_handler.gd" id="8_swy11"]
 [ext_resource type="PackedScene" uid="uid://btqxmsit8gkr5" path="res://SCENES/Battle/card_stack.tscn" id="9_1s0m1"]
+[ext_resource type="PackedScene" uid="uid://dr33emd6e75g1" path="res://round_results.tscn" id="10_qm023"]
 [ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="11_jf47l"]
 [ext_resource type="Texture2D" uid="uid://b7u7itxtw7kp0" path="res://ART/CHARACTER/Diego/boysheet.png" id="12_f4dl1"]
 [ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="13_jmvpf"]
@@ -108,7 +109,15 @@ enemy_card_stack = NodePath("../BattleUI/EnemyCardStack")
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("5_kje7m")
 
+[node name="RoundResults" parent="BattleUI" instance=ExtResource("10_qm023")]
+
 [node name="CardStack" parent="BattleUI" instance=ExtResource("9_1s0m1")]
+
+[node name="CardCounter" parent="BattleUI/CardStack" index="0"]
+offset_left = -4.0
+offset_top = -16.0
+offset_right = 36.0
+offset_bottom = 7.0
 
 [node name="Button" parent="BattleUI/CardStack" index="2"]
 visible = false
@@ -118,8 +127,10 @@ position = Vector2(146, 48)
 stack_id = "enemy_card_stack"
 
 [node name="CardCounter" parent="BattleUI/EnemyCardStack" index="0"]
-offset_left = 44.0
-offset_right = 84.0
+offset_left = -6.0
+offset_top = -17.0
+offset_right = 34.0
+offset_bottom = 6.0
 
 [node name="Button" parent="BattleUI/EnemyCardStack" index="2"]
 visible = false
@@ -155,6 +166,16 @@ text = "End Turn"
 position = Vector2(16, 129)
 sprite_frames = SubResource("SpriteFrames_nuh27")
 script = ExtResource("13_jmvpf")
+
+[node name="Label" type="Label" parent="BattleUI"]
+visible = false
+offset_left = 75.0
+offset_top = 65.0
+offset_right = 173.0
+offset_bottom = 88.0
+theme = ExtResource("3_p22m3")
+theme_override_font_sizes/font_size = 13
+text = "YOU LOSE"
 
 [connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
 [connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]

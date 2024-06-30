@@ -3,15 +3,21 @@ class_name BattleUI extends CanvasLayer
 @export var char_stats: CharacterStats : set = _set_char_stats
 @export var enemy_stats: CharacterStats :  set =  _set_enemy_stats
 
+
 @onready var hand: Hand = $PlayerHand as Hand
 @onready var enemy_hand = $EnemyHand as Hand
 @onready var card_stack: CardStack = $CardStack as CardStack
 @onready var enemy_card_stack: CardStack =  $EnemyCardStack as CardStack
 @onready var end_turn_button: Button = %EndTurn
+@onready var round_results = $RoundResults
+@onready var tempLabel = $Label
 
 func _ready():
 	Events.player_cards_drawn.connect(_on_player_cards_drawn)
+	Events.finished_comparing_stacks.connect(_on_finished_comparing_cards)
+	Events.battle_completed.connect(_handle_battle_completed)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
+	
 	
 
 func _set_char_stats(value: CharacterStats) -> void:
@@ -30,3 +36,15 @@ func _on_player_cards_drawn() -> void:
 func _on_end_turn_button_pressed() -> void:
 	end_turn_button.disabled = true
 	Events.player_turn_ended.emit()
+
+func _on_finished_comparing_cards(round_result: GlobalEnums.round_result) -> void:
+	round_results.update_round_checkbox(round_result)
+
+func _handle_battle_completed(battle_result: GlobalEnums.round_result) -> void:
+	if battle_result == GlobalEnums.round_result.WIN:
+		tempLabel.text = "You Win!"
+	
+	elif battle_result == GlobalEnums.round_result.LOSE:
+		tempLabel.text = "You Lose!"
+	
+	tempLabel.visible = true
