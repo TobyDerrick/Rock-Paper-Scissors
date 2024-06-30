@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://c1qwjrqwilpbb"]
+
+[ext_resource type="Script" path="res://CUSTOM RESOURCES/card.gd" id="1_i1c3v"]
+[ext_resource type="Texture2D" uid="uid://0duanxsqmc10" path="res://ART/CARDS/PaperCard.png" id="1_ph5nu"]
+
+[resource]
+script = ExtResource("1_i1c3v")
+id = "paper_basic"
+type = 1
+strong_to = Array[int]([0])
+weak_to = Array[int]([1])
+card_sprite = ExtResource("1_ph5nu")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8t8fays7hbxx"]
+
+[ext_resource type="Script" path="res://SCENES/UI/hand.gd" id="1_j8vkj"]
+[ext_resource type="Curve" uid="uid://b1yn6bi3fngqu" path="res://SCENES/UI/hand_position_curve.tres" id="2_0wssf"]
+[ext_resource type="Curve" uid="uid://deeodxxh4mwti" path="res://SCENES/UI/height_curve.tres" id="3_3wa5d"]
+[ext_resource type="Curve" uid="uid://ynqujpk4isw6" path="res://SCENES/UI/rotation_curve.tres" id="4_r3pvg"]
+
+[node name="CardFanner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = 104.0
+offset_right = -89.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, -1)
+script = ExtResource("1_j8vkj")
+hand_pos_curve = ExtResource("2_0wssf")
+height_curve = ExtResource("3_3wa5d")
+rotation_curve = ExtResource("4_r3pvg")
+max_card_spread = 20.0

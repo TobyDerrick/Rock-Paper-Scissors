@@ -1,0 +1,163 @@
+[gd_scene load_steps=23 format=3 uid="uid://dgsfi8m4vlt2b"]
+
+[ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
+[ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
+[ext_resource type="Resource" uid="uid://q11e4r4kcvlo" path="res://CHARACTERS/Diego/diego_stats.tres" id="2_n0t5f"]
+[ext_resource type="Resource" uid="uid://bkri040q46v36" path="res://CHARACTERS/ENEMIES/testEnemy.tres" id="3_2ecn4"]
+[ext_resource type="Script" path="res://SCENES/Player/player_handler.gd" id="3_4brfb"]
+[ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="3_p22m3"]
+[ext_resource type="Script" path="res://SCENES/Battle/enemy_handler.gd" id="5_aqro0"]
+[ext_resource type="Script" path="res://SCENES/UI/battle_ui.gd" id="5_kje7m"]
+[ext_resource type="Script" path="res://SCENES/Battle/enemy_brain.gd" id="7_odcnd"]
+[ext_resource type="Script" path="res://SCENES/Battle/card_comparison_handler.gd" id="8_swy11"]
+[ext_resource type="PackedScene" uid="uid://btqxmsit8gkr5" path="res://SCENES/Battle/card_stack.tscn" id="9_1s0m1"]
+[ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="11_jf47l"]
+[ext_resource type="Texture2D" uid="uid://b7u7itxtw7kp0" path="res://ART/CHARACTER/Diego/boysheet.png" id="12_f4dl1"]
+[ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="13_jmvpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkbsh"]
+size = Vector2(256, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0aw8"]
+atlas = ExtResource("12_f4dl1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40mg8"]
+atlas = ExtResource("12_f4dl1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxmej"]
+atlas = ExtResource("12_f4dl1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfqud"]
+atlas = ExtResource("12_f4dl1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfsbt"]
+atlas = ExtResource("12_f4dl1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j35rk"]
+atlas = ExtResource("12_f4dl1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nuh27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0aw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40mg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxmej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfqud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfsbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j35rk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_v3pqy")
+char_stats = ExtResource("2_n0t5f")
+enemy_stats = ExtResource("3_2ecn4")
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.929715, 0.929715, 0.929715, 1)
+texture_filter = 1
+texture = ExtResource("1_72f6t")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="CardDropArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+position = Vector2(128, 51)
+shape = SubResource("RectangleShape2D_qkbsh")
+debug_color = Color(0, 0.6, 0.701961, 0.141176)
+
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("3_4brfb")
+hand = NodePath("../BattleUI/PlayerHand")
+
+[node name="EnemyHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("5_aqro0")
+hand = NodePath("../BattleUI/EnemyHand")
+
+[node name="EnemyBrain" type="Node" parent="EnemyHandler"]
+script = ExtResource("7_odcnd")
+
+[node name="CardComparisonHandler" type="Node" parent="." node_paths=PackedStringArray("player_card_stack", "enemy_card_stack")]
+script = ExtResource("8_swy11")
+player_card_stack = NodePath("../BattleUI/CardStack")
+enemy_card_stack = NodePath("../BattleUI/EnemyCardStack")
+
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+script = ExtResource("5_kje7m")
+
+[node name="CardStack" parent="BattleUI" instance=ExtResource("9_1s0m1")]
+
+[node name="Button" parent="BattleUI/CardStack" index="2"]
+visible = false
+
+[node name="EnemyCardStack" parent="BattleUI" instance=ExtResource("9_1s0m1")]
+position = Vector2(146, 48)
+stack_id = "enemy_card_stack"
+
+[node name="CardCounter" parent="BattleUI/EnemyCardStack" index="0"]
+offset_left = 44.0
+offset_right = 84.0
+
+[node name="Button" parent="BattleUI/EnemyCardStack" index="2"]
+visible = false
+
+[node name="PlayerHand" parent="BattleUI" instance=ExtResource("11_jf47l")]
+hand_id = "hand"
+
+[node name="EnemyHand" parent="BattleUI" instance=ExtResource("11_jf47l")]
+offset_left = 0.0
+offset_top = 28.0
+offset_right = -156.0
+offset_bottom = -56.0
+rotation = 3.14159
+hand_id = "enemy_hand"
+
+[node name="EndTurn" type="Button" parent="BattleUI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -21.0
+offset_right = -3.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_p22m3")
+text = "End Turn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BattleUI"]
+position = Vector2(16, 129)
+sprite_frames = SubResource("SpriteFrames_nuh27")
+script = ExtResource("13_jmvpf")
+
+[connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
+[connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]
+
+[editable path="BattleUI/CardStack"]
+[editable path="BattleUI/EnemyCardStack"]

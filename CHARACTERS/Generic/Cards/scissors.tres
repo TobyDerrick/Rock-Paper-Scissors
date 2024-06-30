@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://b3p3cnyy3tfai"]
+
+[ext_resource type="Texture2D" uid="uid://dej2hpg8v4k7a" path="res://ART/CARDS/ScissorsCard.png" id="1_0n2uh"]
+[ext_resource type="Script" path="res://CUSTOM RESOURCES/card.gd" id="1_xkuu5"]
+
+[resource]
+script = ExtResource("1_xkuu5")
+id = "scissors_basic"
+type = 2
+strong_to = Array[int]([1])
+weak_to = Array[int]([0])
+card_sprite = ExtResource("1_0n2uh")

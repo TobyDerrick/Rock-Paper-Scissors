@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://bkri040q46v36"]
+
+[ext_resource type="Script" path="res://CUSTOM RESOURCES/character_stats.gd" id="1_75jnx"]
+[ext_resource type="Resource" uid="uid://cqdbqbaambtqp" path="res://CHARACTERS/ENEMIES/test_enemy_cards.tres" id="2_7lqnw"]
+
+[resource]
+script = ExtResource("1_75jnx")
+starting_deck = ExtResource("2_7lqnw")
+starting_cards = 3
+cards_per_turn = 2
+max_cards_in_stack = 3
