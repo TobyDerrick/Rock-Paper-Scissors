@@ -178,17 +178,29 @@ position = Vector2(16, 129)
 sprite_frames = SubResource("SpriteFrames_nuh27")
 script = ExtResource("13_jmvpf")
 
-[node name="Label" type="Label" parent="BattleUI"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleUI"]
 visible = false
-offset_left = 75.0
-offset_top = 65.0
-offset_right = 173.0
-offset_bottom = 88.0
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -49.0
+offset_right = 64.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_p22m3")
-theme_override_font_sizes/font_size = 13
-text = "YOU LOSE"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Win![/rainbow] [/wave] [/center]"
+fit_content = true
 
 [connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
 [connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]
