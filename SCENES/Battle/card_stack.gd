@@ -38,7 +38,6 @@ func remove_top_card_from_stack() -> void:
 		var top_card: CardUI = card_stack[0]
 		top_card.card_state_machine.current_state.transition_requested.emit(top_card.card_state_machine.current_state,
 																			   CardState.State.BASE)
-		top_card.reparent_requested.emit(top_card, "hand")
 		card_stack.pop_front()
 		cards_in_stack = card_stack.size()
 		card_counter.text = str(cards_in_stack) + " / " + str(char_stats.max_cards_in_stack)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=26 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="11_jf47l"]
 [ext_resource type="Texture2D" uid="uid://b7u7itxtw7kp0" path="res://ART/CHARACTER/Diego/boysheet.png" id="12_f4dl1"]
 [ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="13_jmvpf"]
+[ext_resource type="Curve" uid="uid://x38gppamsdfn" path="res://SCENES/UI/enemy_height_curve.tres" id="13_mc1vd"]
+[ext_resource type="Curve" uid="uid://cub6pbm3v7m5f" path="res://SCENES/UI/enemy_rotation_curve.tres" id="14_ervu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkbsh"]
 size = Vector2(256, 102)
@@ -140,15 +142,20 @@ offset_bottom = 39.0
 visible = false
 
 [node name="PlayerHand" parent="BattleUI" instance=ExtResource("11_jf47l")]
+offset_left = 64.0
+offset_top = 91.0
+offset_right = -92.0
+offset_bottom = -5.0
 hand_id = "hand"
 
 [node name="EnemyHand" parent="BattleUI" instance=ExtResource("11_jf47l")]
-offset_left = 0.0
-offset_top = 28.0
-offset_right = -156.0
-offset_bottom = -56.0
-rotation = 3.14159
+offset_left = 65.0
+offset_top = -62.0
+offset_right = -91.0
+offset_bottom = -146.0
 hand_id = "enemy_hand"
+height_curve = ExtResource("13_mc1vd")
+rotation_curve = ExtResource("14_ervu7")
 
 [node name="EndTurn" type="Button" parent="BattleUI"]
 unique_name_in_owner = true
@@ -188,3 +195,5 @@ vertical_alignment = 1
 
 [editable path="BattleUI/CardStack"]
 [editable path="BattleUI/EnemyCardStack"]
+[editable path="BattleUI/PlayerHand"]
+[editable path="BattleUI/EnemyHand"]

@@ -8,6 +8,7 @@ func enter() -> void:
 	
 	played = false
 	card_ui.pivot_offset = card_ui.size / 2
+	
 	if not card_ui.targets.is_empty():
 		card_ui.reparent_requested.emit(card_ui, "stack")
 		played = true

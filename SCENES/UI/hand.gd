@@ -6,12 +6,12 @@ signal card_added_to_hand(card: CardUI)
 @export var hand_pos_curve: Curve
 @export var height_curve: Curve
 @export var rotation_curve: Curve
-@export var max_card_spread: float
+@export var min_card_spread: float
 
 @onready var card_ui := preload("res://SCENES/Battle/card_ui.tscn")
 
 func _ready():
-	child_order_changed.connect(update_card_ui)
+	child_order_changed.connect(_handle_child_order_changed)
 
 func add_card(card: Card) -> void:
 	var new_card_ui := card_ui.instantiate()
@@ -30,39 +30,49 @@ func add_card(card: Card) -> void:
 	card_added_to_hand.emit(new_card_ui)
 
 func disable_cards_in_hand() -> void:
-	for card_ui in get_children():
-		card_ui.is_playable = false
+	for child in get_children():
+		if child is CardUI:
+			child.is_playable = false
 	
 func enable_cards_in_hand() -> void:
-	for card_ui in get_children():
-		card_ui.is_playable = true
+	for child in get_children():
+		if child is CardUI:
+			child.is_playable = true
 
 func update_card_ui():
-	var hand_size: Vector2 = get_size()
-	for this_card: CardUI in get_children():
+	
+	var hand_max_size: Vector2 = get_size()
+	var hand_width: float = min_card_spread * get_child_count()
+	#generating hand ratio for the curves
+	for this_card in get_children():
+		if not this_card is CardUI:
+			continue
+			
 		this_card.pivot_offset = this_card.size / 2
 		var hand_ratio = 0.5
 		
 		if get_child_count() > 1:
 			hand_ratio = float(this_card.get_index()) / float(get_child_count() - 1)
 		
-		var destination :=  global_position 
+		#print_debug(hand_ratio)
+		var destination : Vector2 = global_position
+		destination += size / 2
 		
-		destination.x += hand_pos_curve.sample(hand_ratio) * hand_size.x/2
+		
+		destination.x -= hand_pos_curve.sample(hand_ratio) * min(hand_max_size.x, hand_width)
 		destination.y -= height_curve.sample(hand_ratio) * 5
 		
 		
-		#card_ui.rotation = rotation_curve.sample(hand_ratio) * 0.3
-		destination.x += size.x / 2
 		this_card.global_position = destination
+		this_card.rotation = rotation_curve.sample(hand_ratio) * 0.1
 		
 func discard_card(card: CardUI) -> void:
 	card.queue_free()
 	
 func _on_card_ui_reparent_requested(child: CardUI, target_pos: String) -> void:
 	if(target_pos == hand_id):
-		update_card_ui()
 		child.reparent(self)
+		update_card_ui()
 	
-func _card_removed_from_hand():
+func _handle_child_order_changed():
 	update_card_ui()

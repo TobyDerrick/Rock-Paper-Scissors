@@ -14,10 +14,11 @@ func perform_turn():
 	var tween:= create_tween()
 	
 	cards_used = 0
-	for cardUI: CardUI in enemy_hand.get_children():
-		tween.tween_callback(add_card_to_stack.bind(cardUI))
-		tween.tween_interval(PLACE_CARD_INTERVAL)
-		
+	for cardUI in enemy_hand.get_children():
+		if cardUI is CardUI:
+			tween.tween_callback(add_card_to_stack.bind(cardUI))
+			tween.tween_interval(PLACE_CARD_INTERVAL)
+			
 	await tween.finished
 	end_turn()
 	
