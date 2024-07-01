@@ -64,6 +64,7 @@ func update_card_ui():
 		
 		this_card.global_position = destination
 		this_card.rotation = rotation_curve.sample(hand_ratio) * 0.1
+		this_card.base_position = this_card.position
 		
 func discard_card(card: CardUI) -> void:
 	card.queue_free()

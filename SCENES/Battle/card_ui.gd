@@ -14,6 +14,7 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 @onready var drop_point_detector = $DropPointDetector
 @onready var targets: Array[Node] = []
 
+var base_position: Vector2
 var is_playable: bool
 
 func _ready():
@@ -46,5 +47,6 @@ func _set_card_sprite(value: Card) -> void:
 	card_top.texture = card.card_top_sprite
 	card_bottom.texture = char_stats.card_back_sprite 
 	card_top.z_index = -1
+	
 func card_flip():
 	card_flipper.play("card_flip")

@@ -9,6 +9,22 @@ func enter() -> void:
 	card_ui.state.text = "BASE"
 	card_ui.pivot_offset = Vector2.ZERO
 	
+func on_mouse_entered() -> void:
+	if card_ui.is_playable:
+		var tween = get_tree().create_tween()
+		var target_pos = Vector2(card_ui.position.x, card_ui.base_position.y - 20)
+		tween.tween_property(card_ui, "position", target_pos, 0.1)
+
+func on_mouse_exited() -> void:
+	if card_ui.is_playable:
+		#handles edge case when calling mouse exited upon dropping card
+		if not is_inside_tree():
+			return
+			
+		var tween = get_tree().create_tween()
+		var target_pos = Vector2(card_ui.position.x, card_ui.base_position.y)
+		tween.tween_property(card_ui, "position", target_pos, 0.1)
+
 
 func on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse"):

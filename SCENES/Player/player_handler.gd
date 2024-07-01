@@ -1,6 +1,6 @@
 class_name PlayerHandler extends Node
 
-const HAND_DRAW_INTERVAL:= 0.4
+const HAND_DRAW_INTERVAL:= 0.3
 
 @export var hand: Hand
 

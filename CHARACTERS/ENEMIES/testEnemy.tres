@@ -8,6 +8,6 @@
 script = ExtResource("1_75jnx")
 starting_deck = ExtResource("2_7lqnw")
 card_back_sprite = ExtResource("1_hftcu")
-starting_cards = 3
+starting_cards = 5
 cards_per_turn = 2
 max_cards_in_stack = 3
