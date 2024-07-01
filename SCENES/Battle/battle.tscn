@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=27 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bkri040q46v36" path="res://CHARACTERS/ENEMIES/testEnemy.tres" id="3_2ecn4"]
 [ext_resource type="Script" path="res://SCENES/Player/player_handler.gd" id="3_4brfb"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="3_p22m3"]
+[ext_resource type="AudioStream" uid="uid://doqager502rtw" path="res://AUDIO/MUSIC/Monkeys-Spinning-Monkeys(chosic.com).mp3" id="4_l8wlb"]
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_handler.gd" id="5_aqro0"]
 [ext_resource type="Script" path="res://SCENES/UI/battle_ui.gd" id="5_kje7m"]
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_brain.gd" id="7_odcnd"]
@@ -75,6 +76,7 @@ animations = [{
 script = ExtResource("1_v3pqy")
 char_stats = ExtResource("2_n0t5f")
 enemy_stats = ExtResource("3_2ecn4")
+music = ExtResource("4_l8wlb")
 metadata/_edit_lock_ = true
 
 [node name="BG" type="Sprite2D" parent="."]

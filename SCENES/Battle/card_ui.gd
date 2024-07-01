@@ -5,6 +5,7 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 @export var char_stats: CharacterStats
 @export var card: Card : set = _set_card_sprite
 
+const card_flip_sound = preload("res://AUDIO/SOUND EFFECTS/536782__egomassive__flip.ogg")
 @onready var colour: ColorRect = $Colour
 @onready var state: Label = $State
 @onready var card_bottom = $CardBottom
@@ -49,4 +50,5 @@ func _set_card_sprite(value: Card) -> void:
 	card_top.z_index = -1
 	
 func card_flip():
+	SfxPlayer.play(card_flip_sound)
 	card_flipper.play("card_flip")

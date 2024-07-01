@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Events="*res://GLOBAL/events.gd"
 Enums="*res://GLOBAL/enums.gd"
+MusicPlayer="*res://GLOBAL/music_player.tscn"
+SfxPlayer="*res://GLOBAL/sfx_player.tscn"
 
 [display]
 

@@ -3,6 +3,7 @@ extends Node
 #Battle signals
 
 signal battle_completed(battle_result: GlobalEnums.round_result)
+signal card_used(card_used: CardUI)
 
 #Player Signals
 signal player_hand_drawn

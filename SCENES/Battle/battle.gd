@@ -3,6 +3,7 @@ extends Node2D
 @export var char_stats: CharacterStats
 @export var enemy_stats: CharacterStats
 @export var best_of: float =  3
+@export var music: AudioStream
 
 @onready var battle_ui: BattleUI = $BattleUI as BattleUI
 @onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
@@ -23,6 +24,7 @@ func _ready():
 	Events.finished_comparing_stacks.connect(_on_finished_comparing_stacks)
 	
 func start_battle(stats: CharacterStats, enemy_char_stats: CharacterStats) -> void:
+	MusicPlayer.play(music, true)
 	player_handler.start_battle(stats)
 	enemy_handler.start_battle(enemy_char_stats)
 	

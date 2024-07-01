@@ -28,6 +28,7 @@ func add_card_to_stack(card_ui: CardUI) -> void:
 func discard_top_card_from_stack() -> void:
 	if card_stack.size() > 0:
 		var top_card: CardUI = card_stack.front()
+		Events.card_used.emit(top_card)
 		top_card.queue_free()
 		card_stack.pop_front()
 		cards_in_stack = card_stack.size()
