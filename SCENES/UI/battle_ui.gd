@@ -10,7 +10,8 @@ class_name BattleUI extends CanvasLayer
 @onready var enemy_card_stack: CardStack =  $EnemyCardStack as CardStack
 @onready var end_turn_button: Button = %EndTurn
 @onready var round_results = $RoundResults
-@onready var rich_text_label = $RichTextLabel
+@onready var end_game_panel = $EndGamePanel
+@onready var rich_text_label = $EndGamePanel/RichTextLabel
 
 func _ready():
 	Events.player_cards_drawn.connect(_on_player_cards_drawn)
@@ -48,3 +49,4 @@ func _handle_battle_completed(battle_result: GlobalEnums.round_result) -> void:
 	end_turn_button.visible = false
 	hand.disable_cards_in_hand()
 	rich_text_label.visible = true
+	end_game_panel.visible = true

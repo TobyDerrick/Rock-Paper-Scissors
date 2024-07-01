@@ -178,9 +178,18 @@ position = Vector2(16, 129)
 sprite_frames = SubResource("SpriteFrames_nuh27")
 script = ExtResource("13_jmvpf")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BattleUI"]
+[node name="EndGamePanel" type="Panel" parent="BattleUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleUI/EndGamePanel"]
 visible = false
 clip_contents = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
