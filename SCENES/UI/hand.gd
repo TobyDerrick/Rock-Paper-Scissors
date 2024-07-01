@@ -15,16 +15,18 @@ func _ready():
 
 func add_card(card: Card) -> void:
 	var new_card_ui := card_ui.instantiate()
+	new_card_ui.char_stats = char_stats
 	add_child(new_card_ui)
 	new_card_ui.reparent_requested.connect(_on_card_ui_reparent_requested)
 	new_card_ui.card = card
-	new_card_ui.char_stats = char_stats
 	new_card_ui.reparent_requested.emit(new_card_ui, hand_id)
 	
 	if hand_id == "hand":
+		new_card_ui.card_sprite.texture = new_card_ui.card_top_sprite
 		new_card_ui.is_playable = true
 	
 	else:
+		new_card_ui.card_sprite.texture = new_card_ui.card_back_sprite
 		new_card_ui.is_playable = false
 		
 	card_added_to_hand.emit(new_card_ui)

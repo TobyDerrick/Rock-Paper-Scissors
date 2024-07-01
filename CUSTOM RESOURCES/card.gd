@@ -9,4 +9,4 @@ enum Type {ROCK, PAPER, SCISSORS}
 @export var weak_to: Array[Type]
 
 @export_group("Visuals")
-@export var card_sprite: Texture
+@export var card_top_sprite: Texture

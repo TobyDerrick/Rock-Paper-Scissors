@@ -9,4 +9,4 @@ id = "rock_basic"
 type = 0
 strong_to = Array[int]([2])
 weak_to = Array[int]([1])
-card_sprite = ExtResource("1_phkpk")
+card_top_sprite = ExtResource("1_phkpk")

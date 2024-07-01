@@ -2,8 +2,8 @@ class_name CardUI extends Control
 
 signal reparent_requested(which_card: CardUI, target_pos: String)
 
-@export var card: Card : set = _set_card_sprite
 @export var char_stats: CharacterStats
+@export var card: Card : set = _set_card_sprite
 
 @onready var colour: ColorRect = $Colour
 @onready var state: Label = $State
@@ -11,6 +11,9 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var drop_point_detector = $DropPointDetector
 @onready var targets: Array[Node] = []
+
+var card_top_sprite: Texture
+var card_back_sprite: Texture
 
 var is_playable: bool
 
@@ -39,7 +42,8 @@ func _on_drop_point_detector_area_exited(area) -> void:
 func _set_card_sprite(value: Card) -> void:
 	if not is_node_ready():
 		await ready
-		
+	
 	card = value
-	card_sprite.texture = card.card_sprite
+	card_top_sprite = card.card_top_sprite
+	card_back_sprite = char_stats.card_back_sprite
 	

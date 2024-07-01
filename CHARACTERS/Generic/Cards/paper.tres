@@ -9,4 +9,4 @@ id = "paper_basic"
 type = 1
 strong_to = Array[int]([0])
 weak_to = Array[int]([1])
-card_sprite = ExtResource("1_ph5nu")
+card_top_sprite = ExtResource("1_ph5nu")

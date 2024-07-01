@@ -1,6 +1,6 @@
 class_name CardComparisonHandler extends Node
 
-const COMPARISON_INTERVAL := 0.5
+const COMPARISON_INTERVAL := 1
 
 @export var player_card_stack: CardStack
 @export var enemy_card_stack: CardStack
@@ -20,12 +20,20 @@ func handle_comparison():
 	comparison_score = 0
 	
 	while not player_card_stack.card_stack.is_empty() or not enemy_card_stack.card_stack.is_empty():
-		compare_next_card()
+		reveal_next_card()
 		await get_tree().create_timer(COMPARISON_INTERVAL).timeout
+		compare_next_card()
 	#all cards compared
 	
 	Events.finished_comparing_stacks.emit(determine_winner())
-	
+
+func reveal_next_card():
+		var enemy_top_card: CardUI
+			
+		if not enemy_card_stack.card_stack.is_empty():
+			enemy_top_card = enemy_card_stack.card_stack.front()
+			enemy_top_card.card_sprite.texture = enemy_top_card.card.card_top_sprite
+			
 func compare_next_card():
 	
 		var player_top_card: CardUI
@@ -46,7 +54,7 @@ func compare_next_card():
 			
 			hand_comparison_results.DRAW:
 				pass
-		
+				
 		player_card_stack.discard_top_card_from_stack()
 		enemy_card_stack.discard_top_card_from_stack()
 

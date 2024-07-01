@@ -1,9 +1,11 @@
 class_name CharacterStats extends Stats
 
 @export var starting_deck: CardPile
+@export var card_back_sprite: Texture
 @export var starting_cards: int
 @export var cards_per_turn: int
 @export var max_cards_in_stack: int
+
 
 var deck: CardPile
 var discard: CardPile

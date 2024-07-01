@@ -9,4 +9,4 @@ id = "scissors_basic"
 type = 2
 strong_to = Array[int]([1])
 weak_to = Array[int]([0])
-card_sprite = ExtResource("1_0n2uh")
+card_top_sprite = ExtResource("1_0n2uh")

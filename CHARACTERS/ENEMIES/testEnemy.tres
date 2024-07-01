@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://bkri040q46v36"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://bkri040q46v36"]
 
 [ext_resource type="Script" path="res://CUSTOM RESOURCES/character_stats.gd" id="1_75jnx"]
+[ext_resource type="Texture2D" uid="uid://dkfxyslsr4j5x" path="res://ART/CARDS/TestCard2.png" id="1_hftcu"]
 [ext_resource type="Resource" uid="uid://cqdbqbaambtqp" path="res://CHARACTERS/ENEMIES/test_enemy_cards.tres" id="2_7lqnw"]
 
 [resource]
 script = ExtResource("1_75jnx")
 starting_deck = ExtResource("2_7lqnw")
+card_back_sprite = ExtResource("1_hftcu")
 starting_cards = 3
 cards_per_turn = 2
 max_cards_in_stack = 3
