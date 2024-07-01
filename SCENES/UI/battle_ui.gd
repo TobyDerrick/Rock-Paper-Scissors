@@ -18,7 +18,6 @@ func _ready():
 	Events.battle_completed.connect(_handle_battle_completed)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 	
-	
 
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
@@ -34,6 +33,7 @@ func _on_player_cards_drawn() -> void:
 	end_turn_button.disabled = false
 
 func _on_end_turn_button_pressed() -> void:
+	hand.disable_cards_in_hand()
 	end_turn_button.disabled = true
 	Events.player_turn_ended.emit()
 

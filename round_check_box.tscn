@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://round_check_box.gd" id="1_50abr"]
 
 [node name="RoundCheckBox" type="Panel"]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(12, 12)
 script = ExtResource("1_50abr")
 
 [node name="ColorRect" type="ColorRect" parent="."]

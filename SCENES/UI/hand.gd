@@ -20,8 +20,22 @@ func add_card(card: Card) -> void:
 	new_card_ui.card = card
 	new_card_ui.char_stats = char_stats
 	new_card_ui.reparent_requested.emit(new_card_ui, hand_id)
+	
+	if hand_id == "hand":
+		new_card_ui.is_playable = true
+	
+	else:
+		new_card_ui.is_playable = false
+		
 	card_added_to_hand.emit(new_card_ui)
 
+func disable_cards_in_hand() -> void:
+	for card_ui in get_children():
+		card_ui.is_playable = false
+	
+func enable_cards_in_hand() -> void:
+	for card_ui in get_children():
+		card_ui.is_playable = true
 
 func update_card_ui():
 	var hand_size: Vector2 = get_size()
@@ -52,4 +66,3 @@ func _on_card_ui_reparent_requested(child: CardUI, target_pos: String) -> void:
 	
 func _card_removed_from_hand():
 	update_card_ui()
-	

@@ -12,6 +12,8 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 @onready var drop_point_detector = $DropPointDetector
 @onready var targets: Array[Node] = []
 
+var is_playable: bool
+
 func _ready():
 	card_state_machine.init(self)
 	

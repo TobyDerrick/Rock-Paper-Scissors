@@ -17,6 +17,7 @@ func start_battle(char_stats: CharacterStats) -> void:
 
 func start_turn(_prev_round_win_state: GlobalEnums.round_result = GlobalEnums.round_result.WIN) -> void:
 	draw_cards(character.cards_per_turn)
+	hand.enable_cards_in_hand()
 	
 func draw_card() -> void:
 	reshuffle_deck_when_empty()

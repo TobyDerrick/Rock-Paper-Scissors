@@ -13,14 +13,17 @@ stack_id = "stack"
 card_counter = NodePath("CardCounter")
 
 [node name="CardCounter" type="Label" parent="."]
-offset_left = -48.0
-offset_top = 13.0
-offset_right = -8.0
-offset_bottom = 36.0
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 1.0
+offset_top = -15.0
+offset_right = 34.0
+offset_bottom = -1.0
+grow_horizontal = 2
 theme = ExtResource("2_p83d1")
 theme_override_font_sizes/font_size = 10
 text = "0 / 3"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="DebugShape" type="CollisionShape2D" parent="."]
 position = Vector2(17, 25)
