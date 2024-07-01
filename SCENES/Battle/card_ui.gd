@@ -7,13 +7,12 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 
 @onready var colour: ColorRect = $Colour
 @onready var state: Label = $State
-@onready var card_sprite = $TextureRect 
+@onready var card_bottom = $CardBottom
+@onready var card_top = $CardBottom/CardTop
+@onready var card_flipper = $CardFlip
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var drop_point_detector = $DropPointDetector
 @onready var targets: Array[Node] = []
-
-var card_top_sprite: Texture
-var card_back_sprite: Texture
 
 var is_playable: bool
 
@@ -44,6 +43,8 @@ func _set_card_sprite(value: Card) -> void:
 		await ready
 	
 	card = value
-	card_top_sprite = card.card_top_sprite
-	card_back_sprite = char_stats.card_back_sprite
-	
+	card_top.texture = card.card_top_sprite
+	card_bottom.texture = char_stats.card_back_sprite 
+	card_top.z_index = -1
+func card_flip():
+	card_flipper.play("card_flip")

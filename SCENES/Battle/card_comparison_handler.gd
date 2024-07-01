@@ -27,12 +27,11 @@ func handle_comparison():
 	
 	Events.finished_comparing_stacks.emit(determine_winner())
 
-func reveal_next_card():
-		var enemy_top_card: CardUI
-			
+func reveal_next_card():		
 		if not enemy_card_stack.card_stack.is_empty():
-			enemy_top_card = enemy_card_stack.card_stack.front()
-			enemy_top_card.card_sprite.texture = enemy_top_card.card.card_top_sprite
+			var enemy_top_card: CardUI = enemy_card_stack.card_stack.front()
+			enemy_top_card.card_flip()
+			
 			
 func compare_next_card():
 	

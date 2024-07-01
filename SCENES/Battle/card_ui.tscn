@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ykbe4luv30th"]
+[gd_scene load_steps=15 format=3 uid="uid://ykbe4luv30th"]
 
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="1_8a88n"]
 [ext_resource type="Script" path="res://SCENES/Battle/card_ui.gd" id="2_530xu"]
 [ext_resource type="Script" path="res://SCENES/Battle/card_state_machine.gd" id="3_e57db"]
 [ext_resource type="Resource" uid="uid://c1qwjrqwilpbb" path="res://CHARACTERS/Generic/Cards/paper.tres" id="3_hj3n8"]
 [ext_resource type="Script" path="res://SCENES/Battle/CARD STATES/card_base_state.gd" id="4_gvvd0"]
+[ext_resource type="Texture2D" uid="uid://dkfxyslsr4j5x" path="res://ART/CARDS/TestCard2.png" id="4_kh0nb"]
 [ext_resource type="Texture2D" uid="uid://0duanxsqmc10" path="res://ART/CARDS/PaperCard.png" id="4_ud650"]
 [ext_resource type="Script" path="res://SCENES/Battle/CARD STATES/card_clicked_state.gd" id="5_g6me1"]
 [ext_resource type="Script" path="res://SCENES/Battle/CARD STATES/card_released_state.gd" id="6_wu7ak"]
@@ -12,6 +13,68 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3l33"]
 size = Vector2(32, 48)
+
+[sub_resource type="Animation" id="Animation_0hld7"]
+resource_name = "card_flip"
+length = 0.4
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBottom:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.353553, 1, 0.34151),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBottom/CardTop:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_tcabt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBottom:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBottom/CardTop:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pamb"]
+_data = {
+"RESET": SubResource("Animation_tcabt"),
+"card_flip": SubResource("Animation_0hld7")
+}
 
 [node name="CardUI" type="Control"]
 custom_minimum_size = Vector2(32, 48)
@@ -23,7 +86,17 @@ theme = ExtResource("1_8a88n")
 script = ExtResource("2_530xu")
 card = ExtResource("3_hj3n8")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="CardBottom" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 24)
+texture = ExtResource("4_kh0nb")
+
+[node name="CardTop" type="TextureRect" parent="CardBottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,6 +132,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DropPointDetector" type="Area2D" parent="."]
+modulate = Color(1, 1, 1, 0.129412)
 collision_mask = 2
 monitorable = false
 
@@ -84,6 +158,11 @@ state = 3
 [node name="CardDraggingState" type="Node" parent="CardStateMachine"]
 script = ExtResource("7_ci0ic")
 state = 2
+
+[node name="CardFlip" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5pamb")
+}
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

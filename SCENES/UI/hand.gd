@@ -22,11 +22,10 @@ func add_card(card: Card) -> void:
 	new_card_ui.reparent_requested.emit(new_card_ui, hand_id)
 	
 	if hand_id == "hand":
-		new_card_ui.card_sprite.texture = new_card_ui.card_top_sprite
+		new_card_ui.card_flip()
 		new_card_ui.is_playable = true
 	
 	else:
-		new_card_ui.card_sprite.texture = new_card_ui.card_back_sprite
 		new_card_ui.is_playable = false
 		
 	card_added_to_hand.emit(new_card_ui)
