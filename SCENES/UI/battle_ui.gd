@@ -42,14 +42,9 @@ func _on_finished_comparing_cards(round_result: GlobalEnums.round_result) -> voi
 
 func _handle_battle_completed(battle_result: GlobalEnums.round_result) -> void:
 	if battle_result == GlobalEnums.round_result.WIN:
-		rich_text_label.text ="[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]
-						You Win!
-						[/rainbow] [/wave] [/center]"
-	
+		rich_text_label.text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Win![/rainbow] [/wave] [/center]"
 	elif battle_result == GlobalEnums.round_result.LOSE:
-		rich_text_label.text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]
-								You Lose!
-								[/rainbow] [/wave] [/center]"
+		rich_text_label.text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Lose![/rainbow] [/wave] [/center]"
 	end_turn_button.visible = false
 	hand.disable_cards_in_hand()
 	rich_text_label.visible = true

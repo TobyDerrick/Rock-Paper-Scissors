@@ -20,4 +20,4 @@ script = ExtResource("1_j8vkj")
 hand_pos_curve = ExtResource("2_0wssf")
 height_curve = ExtResource("3_3wa5d")
 rotation_curve = ExtResource("4_r3pvg")
-min_card_spread = 10.0
+max_spread = 5

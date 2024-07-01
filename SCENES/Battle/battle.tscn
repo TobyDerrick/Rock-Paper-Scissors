@@ -186,10 +186,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -49.0
-offset_right = 64.0
-offset_bottom = -31.0
+offset_left = -67.0
+offset_top = -46.0
+offset_right = 60.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_p22m3")
@@ -201,6 +201,7 @@ theme_override_font_sizes/mono_font_size = 12
 bbcode_enabled = true
 text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Win![/rainbow] [/wave] [/center]"
 fit_content = true
+scroll_active = false
 
 [connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
 [connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]

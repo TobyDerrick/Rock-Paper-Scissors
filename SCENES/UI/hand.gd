@@ -6,7 +6,7 @@ signal card_added_to_hand(card: CardUI)
 @export var hand_pos_curve: Curve
 @export var height_curve: Curve
 @export var rotation_curve: Curve
-@export var min_card_spread: float
+@export var max_spread: int
 
 @onready var card_ui := preload("res://SCENES/Battle/card_ui.tscn")
 
@@ -42,14 +42,12 @@ func enable_cards_in_hand() -> void:
 			child.is_playable = true
 
 func update_card_ui():
-	
-	var hand_max_size: Vector2 = get_size()
-	var hand_width: float = min_card_spread * get_child_count()
+	var total_cards_in_hand: int = get_child_count()
 	#generating hand ratio for the curves
 	for this_card in get_children():
 		if not this_card is CardUI:
 			continue
-			
+		
 		this_card.pivot_offset = this_card.size / 2
 		var hand_ratio = 0.5
 		
@@ -61,7 +59,7 @@ func update_card_ui():
 		destination += size / 2
 		
 		
-		destination.x -= hand_pos_curve.sample(hand_ratio) * min(hand_max_size.x, hand_width)
+		destination.x -= hand_pos_curve.sample(hand_ratio) * min(size.x / 2, max_spread * total_cards_in_hand)
 		destination.y -= height_curve.sample(hand_ratio) * 5
 		
 		
