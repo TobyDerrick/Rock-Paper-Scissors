@@ -5,8 +5,7 @@ class_name CardStack extends Node2D
 @export var card_counter: Label
 
 var card_stack: Array[CardUI]
-var cards_in_stack: int
-
+var cards_in_stack: int = 0
 
 func _on_card_ui_reparent_requested(card_ui: CardUI, target_pos: String) -> void: 
 	if(target_pos == stack_id):
@@ -42,7 +41,12 @@ func remove_top_card_from_stack() -> void:
 																			   CardState.State.BASE)
 		card_stack.pop_front()
 		cards_in_stack = card_stack.size()
-		card_counter.text = str(cards_in_stack) + " / " + str(char_stats.max_cards_in_stack)
+		update_card_stack_ui()
+
+func update_card_stack_ui() -> void:
+	card_counter.text = str(cards_in_stack) + " / " + str(char_stats.max_cards_in_stack)
+
+	
 
 func clear_stack():
 	card_stack.clear()

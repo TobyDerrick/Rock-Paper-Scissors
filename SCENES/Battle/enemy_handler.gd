@@ -13,8 +13,14 @@ func start_battle(char_stats: CharacterStats) -> void:
 	draw_starting_hand(character.starting_cards)
 	
 func start_turn(_previous_round_result: GlobalEnums.round_result = GlobalEnums.round_result.WIN) -> void:
-	draw_cards(character.cards_per_turn)
-
+	if not first_draw:
+		draw_cards(character.cards_per_turn)
+	
+	else:
+		Events.enemy_cards_drawn.emit()
+		first_draw = false
+	
+	
 func draw_cards(amount: int) -> void:
 	var tween:= create_tween()
 	for i in range(amount):

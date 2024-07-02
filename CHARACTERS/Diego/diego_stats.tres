@@ -10,4 +10,4 @@ starting_deck = ExtResource("2_dafle")
 card_back_sprite = ExtResource("1_8y07y")
 starting_cards = 5
 cards_per_turn = 2
-max_cards_in_stack = 3
+max_cards_in_stack = 5

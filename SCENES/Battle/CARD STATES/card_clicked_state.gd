@@ -1,6 +1,7 @@
 extends CardState
 
 func enter() -> void:
+	card_ui.pivot_offset = card_ui.size/2
 	card_ui.colour.color = Color.ORANGE
 	card_ui.state.text = "CLICKED"
 	card_ui.drop_point_detector.monitoring = true

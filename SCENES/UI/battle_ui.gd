@@ -4,10 +4,10 @@ class_name BattleUI extends CanvasLayer
 @export var enemy_stats: CharacterStats :  set =  _set_enemy_stats
 @export var end_turn_sound: AudioStream
 
-@onready var hand: Hand = $PlayerHand as Hand
-@onready var enemy_hand = $EnemyHand as Hand
-@onready var card_stack: CardStack = $CardStack as CardStack
-@onready var enemy_card_stack: CardStack =  $EnemyCardStack as CardStack
+@onready var hand: Hand = $PlayerHand
+@onready var enemy_hand = $EnemyHand
+@onready var card_stack: CardStack = $CardStack
+@onready var enemy_card_stack: CardStack =  $EnemyCardStack
 @onready var end_turn_button: Button = %EndTurn
 @onready var round_results = $RoundResults
 @onready var end_game_panel = $EndGamePanel
@@ -23,11 +23,14 @@ func _ready():
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	card_stack.char_stats = char_stats
+	card_stack.update_card_stack_ui()
 	hand.char_stats = char_stats
+	
 
 func _set_enemy_stats(value: CharacterStats) -> void:
 	enemy_stats = value
 	enemy_card_stack.char_stats = enemy_stats
+	enemy_card_stack.update_card_stack_ui()
 	enemy_hand.char_stats =  enemy_stats
 	
 func _on_player_cards_drawn() -> void:
