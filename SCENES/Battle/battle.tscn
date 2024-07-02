@@ -134,10 +134,10 @@ offset_bottom = 146.0
 [node name="CardStack" parent="BattleUI" instance=ExtResource("9_1s0m1")]
 
 [node name="CardCounter" parent="BattleUI/CardStack" index="0"]
-offset_left = -47.0
-offset_top = 16.0
-offset_right = -7.0
-offset_bottom = 39.0
+offset_left = -12.0
+offset_top = 61.0
+offset_right = 28.0
+offset_bottom = 84.0
 
 [node name="Button" parent="BattleUI/CardStack" index="2"]
 visible = false
@@ -147,10 +147,10 @@ position = Vector2(146, 48)
 stack_id = "enemy_card_stack"
 
 [node name="CardCounter" parent="BattleUI/EnemyCardStack" index="0"]
-offset_left = 49.0
-offset_top = 16.0
-offset_right = 83.0
-offset_bottom = 39.0
+offset_left = -12.0
+offset_top = 60.0
+offset_right = 22.0
+offset_bottom = 83.0
 
 [node name="Button" parent="BattleUI/EnemyCardStack" index="2"]
 visible = false
