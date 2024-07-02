@@ -41,7 +41,7 @@ func on_gui_input(event: InputEvent) -> void:
 		var lerp_val_y: float = remap(mouse_pos.y, 0.0, card_ui.size.y, 0,1)
 		
 		var rot_x: float = rad_to_deg(lerp_angle(-card_ui.angle_x_max, card_ui.angle_x_max, lerp_val_x))
-		var rot_y: float = rad_to_deg(lerp_angle(-card_ui.angle_y_max, card_ui.angle_y_max, lerp_val_y))
+		var rot_y: float = rad_to_deg(lerp_angle(card_ui.angle_y_max, -card_ui.angle_y_max, lerp_val_y))
 		
 		card_ui.card_sprite.material.set_shader_parameter("x_rot", rot_y)
 		card_ui.card_sprite.material.set_shader_parameter("y_rot", rot_x)
