@@ -11,6 +11,7 @@ func enter() -> void:
 	
 func on_mouse_entered() -> void:
 	if card_ui.is_playable:
+		SfxPlayer.play(card_ui.card.card_unhover_sound, true)
 		var tween = get_tree().create_tween()
 		var target_pos = Vector2(card_ui.position.x, card_ui.base_position.y - 20)
 		tween.tween_property(card_ui, "position", target_pos, 0.1)
@@ -20,7 +21,7 @@ func on_mouse_exited() -> void:
 		#handles edge case when calling mouse exited upon dropping card
 		if not is_inside_tree():
 			return
-			
+		
 		var tween = get_tree().create_tween()
 		var target_pos = Vector2(card_ui.position.x, card_ui.base_position.y)
 		tween.tween_property(card_ui, "position", target_pos, 0.1)

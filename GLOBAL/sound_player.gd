@@ -1,6 +1,6 @@
 extends Node
 
-func play(audio: AudioStream, single = false) -> void:
+func play(audio: AudioStream, single = false, randomize_pitch = false) -> void:
 	if not audio:
 		return
 	
@@ -11,6 +11,11 @@ func play(audio: AudioStream, single = false) -> void:
 		player = player as AudioStreamPlayer
 		
 		if not player.playing:
+			if randomize_pitch:
+				player.pitch_scale = randf_range(0.8, 1.2)
+			
+			else:
+				player.pitch_scale = 1
 			player.stream = audio
 			player.play()
 			break

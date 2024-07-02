@@ -14,6 +14,7 @@ func _on_card_ui_reparent_requested(card_ui: CardUI, target_pos: String) -> void
 
 func add_card_to_stack(card_ui: CardUI) -> void:
 	if cards_in_stack < char_stats.max_cards_in_stack:
+		SfxPlayer.play(card_ui.card.play_sound, false, true)
 		card_ui.reparent(self)
 		card_ui.rotation = randf_range(deg_to_rad(-20), deg_to_rad(20))
 		card_ui.global_position = global_position
@@ -28,7 +29,7 @@ func add_card_to_stack(card_ui: CardUI) -> void:
 func discard_top_card_from_stack() -> void:
 	if card_stack.size() > 0:
 		var top_card: CardUI = card_stack.front()
-		Events.card_used.emit(top_card)
+		Events.card_discarded.emit(top_card)
 		top_card.queue_free()
 		card_stack.pop_front()
 		cards_in_stack = card_stack.size()

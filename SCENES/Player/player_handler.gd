@@ -3,9 +3,13 @@ class_name PlayerHandler extends Node
 const HAND_DRAW_INTERVAL:= 0.3
 
 @export var hand: Hand
+@export var draw_sound: AudioStream
 
 var first_draw: bool = true
 var character: CharacterStats
+
+func _ready():
+	Events.card_discarded.connect(add_card_to_discard_pile)
 
 func start_battle(char_stats: CharacterStats) -> void:
 	character = char_stats
@@ -25,6 +29,7 @@ func start_turn(_prev_round_win_state: GlobalEnums.round_result = GlobalEnums.ro
 	
 func draw_card() -> void:
 	reshuffle_deck_when_empty()
+	SfxPlayer.play(draw_sound, false, true)
 	hand.add_card(character.draw_pile.draw_card())
 	reshuffle_deck_when_empty()
 
@@ -44,6 +49,9 @@ func draw_starting_hand(amount: int) -> void:
 	
 	tween.finished.connect(func(): Events.player_hand_drawn.emit())
 	await tween.finished
+
+func add_card_to_discard_pile(card: CardUI):
+	character.discard.add_card(card.card)
 
 func reshuffle_deck_when_empty():
 	if not character.draw_pile.empty():

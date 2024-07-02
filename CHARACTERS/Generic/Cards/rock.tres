@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://1m6ptlcuuxwg"]
+[gd_resource type="Resource" script_class="Card" load_steps=7 format=3 uid="uid://1m6ptlcuuxwg"]
 
+[ext_resource type="AudioStream" uid="uid://rlv0m6mbxuao" path="res://AUDIO/SOUND EFFECTS/536782__egomassive__flip.ogg" id="1_m3avu"]
 [ext_resource type="Texture2D" uid="uid://67g2p0bhppff" path="res://ART/CARDS/RockCard.png" id="1_phkpk"]
 [ext_resource type="Script" path="res://CUSTOM RESOURCES/card.gd" id="1_yei0e"]
+[ext_resource type="AudioStream" uid="uid://q45duylsqs2d" path="res://AUDIO/SOUND EFFECTS/playcard.wav" id="2_b4kxw"]
+[ext_resource type="AudioStream" uid="uid://bq0k00vr4e0x2" path="res://AUDIO/SOUND EFFECTS/tap.wav" id="2_thi3x"]
+[ext_resource type="AudioStream" uid="uid://bmaroc1jofs3b" path="res://AUDIO/SOUND EFFECTS/untap.wav" id="4_0u4tu"]
 
 [resource]
 script = ExtResource("1_yei0e")
@@ -10,3 +14,7 @@ type = 0
 strong_to = Array[int]([2])
 weak_to = Array[int]([1])
 card_top_sprite = ExtResource("1_phkpk")
+play_sound = ExtResource("2_b4kxw")
+card_hover_sound = ExtResource("2_thi3x")
+card_unhover_sound = ExtResource("4_0u4tu")
+card_flip_sound = ExtResource("1_m3avu")

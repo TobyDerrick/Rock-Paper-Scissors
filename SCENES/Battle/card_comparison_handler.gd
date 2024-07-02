@@ -1,9 +1,11 @@
 class_name CardComparisonHandler extends Node
 
-const COMPARISON_INTERVAL := 1
+const COMPARISON_INTERVAL := 1.25
 
 @export var player_card_stack: CardStack
 @export var enemy_card_stack: CardStack
+@export var win_sound: AudioStream
+@export var lose_sound: AudioStream
 
 @onready var battle_ui: BattleUI = $"../BattleUI" as BattleUI
 
@@ -46,9 +48,11 @@ func compare_next_card():
 		
 		match compare_cards(player_top_card, enemy_top_card):
 			hand_comparison_results.WIN:
+				SfxPlayer.play(win_sound)
 				comparison_score += 1
 			
 			hand_comparison_results.LOSE:
+				SfxPlayer.play(lose_sound)
 				comparison_score -= 1
 			
 			hand_comparison_results.DRAW:

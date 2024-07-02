@@ -1,12 +1,20 @@
-[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://c1qwjrqwilpbb"]
+[gd_resource type="Resource" script_class="Card" load_steps=7 format=3 uid="uid://c1qwjrqwilpbb"]
 
 [ext_resource type="Script" path="res://CUSTOM RESOURCES/card.gd" id="1_i1c3v"]
+[ext_resource type="AudioStream" uid="uid://rlv0m6mbxuao" path="res://AUDIO/SOUND EFFECTS/536782__egomassive__flip.ogg" id="1_p5ph7"]
 [ext_resource type="Texture2D" uid="uid://0duanxsqmc10" path="res://ART/CARDS/PaperCard.png" id="1_ph5nu"]
+[ext_resource type="AudioStream" uid="uid://bq0k00vr4e0x2" path="res://AUDIO/SOUND EFFECTS/tap.wav" id="2_dmswg"]
+[ext_resource type="AudioStream" uid="uid://q45duylsqs2d" path="res://AUDIO/SOUND EFFECTS/playcard.wav" id="2_m3lfq"]
+[ext_resource type="AudioStream" uid="uid://bmaroc1jofs3b" path="res://AUDIO/SOUND EFFECTS/untap.wav" id="4_i43nm"]
 
 [resource]
 script = ExtResource("1_i1c3v")
 id = "paper_basic"
 type = 1
 strong_to = Array[int]([0])
-weak_to = Array[int]([1])
+weak_to = Array[int]([2])
 card_top_sprite = ExtResource("1_ph5nu")
+play_sound = ExtResource("2_m3lfq")
+card_hover_sound = ExtResource("2_dmswg")
+card_unhover_sound = ExtResource("4_i43nm")
+card_flip_sound = ExtResource("1_p5ph7")

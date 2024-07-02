@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq0k00vr4e0x2"
+path="res://.godot/imported/tap.wav-1a681d42e3d94744763a8f9d5e3370b6.sample"
+
+[deps]
+
+source_file="res://AUDIO/SOUND EFFECTS/tap.wav"
+dest_files=["res://.godot/imported/tap.wav-1a681d42e3d94744763a8f9d5e3370b6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

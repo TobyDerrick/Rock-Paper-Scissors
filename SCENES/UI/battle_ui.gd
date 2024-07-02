@@ -2,7 +2,7 @@ class_name BattleUI extends CanvasLayer
 
 @export var char_stats: CharacterStats : set = _set_char_stats
 @export var enemy_stats: CharacterStats :  set =  _set_enemy_stats
-
+@export var end_turn_sound: AudioStream
 
 @onready var hand: Hand = $PlayerHand as Hand
 @onready var enemy_hand = $EnemyHand as Hand
@@ -35,6 +35,7 @@ func _on_player_cards_drawn() -> void:
 
 func _on_end_turn_button_pressed() -> void:
 	hand.disable_cards_in_hand()
+	SfxPlayer.play(end_turn_sound)
 	end_turn_button.disabled = true
 	Events.player_turn_ended.emit()
 
