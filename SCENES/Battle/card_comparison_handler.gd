@@ -7,7 +7,7 @@ const COMPARISON_INTERVAL := 1.25
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
 
-@onready var battle_ui: BattleUI = $"../BattleUI" as BattleUI
+@onready var round_score = $"../BattleUI/RoundScore"
 
 enum hand_comparison_results{WIN, LOSE, DRAW}
 var comparison_score: int
@@ -20,13 +20,21 @@ func _handle_enemy_turn_ended():
 
 func handle_comparison():
 	comparison_score = 0
+	round_score.visible = true
+	round_score.text = str(comparison_score)
 	
 	while not player_card_stack.card_stack.is_empty() or not enemy_card_stack.card_stack.is_empty():
 		reveal_next_card()
 		await get_tree().create_timer(COMPARISON_INTERVAL).timeout
 		compare_next_card()
+		round_score.text = str(comparison_score)
+		
+		player_card_stack.discard_top_card_from_stack()
+		enemy_card_stack.discard_top_card_from_stack()
+
 	#all cards compared
 	
+	round_score.visible = false
 	Events.finished_comparing_stacks.emit(determine_winner())
 
 func reveal_next_card():		
@@ -59,8 +67,6 @@ func compare_next_card():
 			hand_comparison_results.DRAW:
 				pass
 				
-		player_card_stack.discard_top_card_from_stack()
-		enemy_card_stack.discard_top_card_from_stack()
 
 func compare_cards(card1, card2) -> hand_comparison_results:
 	if card1 == null and card2 != null:

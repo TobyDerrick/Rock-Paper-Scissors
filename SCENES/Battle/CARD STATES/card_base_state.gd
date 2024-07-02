@@ -12,19 +12,19 @@ func enter() -> void:
 func on_mouse_entered() -> void:
 	if card_ui.is_playable:
 		SfxPlayer.play(card_ui.card.card_hover_sound, true)
-		var tween = get_tree().create_tween()
-		var target_pos = Vector2(card_ui.position.x, card_ui.base_position.y - 20)
-		tween.tween_property(card_ui, "position", target_pos, 0.1)
+		var tween = get_tree().create_tween() 
+		tween.tween_property(card_ui, "position", Vector2.UP * 20, 0.1).as_relative()
 
 func on_mouse_exited() -> void:
 	if card_ui.is_playable:
-		#handles edge case when calling mouse exited upon dropping card
 		if not is_inside_tree():
 			return
 		
 		var tween = get_tree().create_tween()
-		var target_pos = Vector2(card_ui.position.x, card_ui.base_position.y)
+		var target_pos = Vector2(card_ui.base_position.x, card_ui.base_position.y)
 		tween.tween_property(card_ui, "position", target_pos, 0.1)
+		card_ui.card_sprite.material.set_shader_parameter("x_rot", 0)
+		card_ui.card_sprite.material.set_shader_parameter("y_rot", 0)
 
 
 func on_gui_input(event: InputEvent) -> void:
@@ -32,3 +32,16 @@ func on_gui_input(event: InputEvent) -> void:
 		if card_ui.is_playable:
 				card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
 				transition_requested.emit(self, CardState.State.CLICKED)
+
+	if event is InputEventMouseMotion:
+		var mouse_pos: Vector2 = card_ui.get_local_mouse_position()
+		var diff: Vector2 = (card_ui.position + card_ui.size) - mouse_pos
+		
+		var lerp_val_x: float = remap(mouse_pos.x, 0.0, card_ui.size.x, 0,1)
+		var lerp_val_y: float = remap(mouse_pos.y, 0.0, card_ui.size.y, 0,1)
+		
+		var rot_x: float = rad_to_deg(lerp_angle(-card_ui.angle_x_max, card_ui.angle_x_max, lerp_val_x))
+		var rot_y: float = rad_to_deg(lerp_angle(-card_ui.angle_y_max, card_ui.angle_y_max, lerp_val_y))
+		
+		card_ui.card_sprite.material.set_shader_parameter("x_rot", rot_y)
+		card_ui.card_sprite.material.set_shader_parameter("y_rot", rot_x)

@@ -4,20 +4,28 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 
 @export var char_stats: CharacterStats
 @export var card: Card : set = _set_card_sprite
+@export_group("perspective settings")
+@export var angle_x_max: float
+@export var angle_y_max: float
 
 @onready var colour: ColorRect = $Colour
 @onready var state: Label = $State
-@onready var card_bottom = $CardBottom
-@onready var card_top = $CardBottom/CardTop
+@onready var card_sprite = $CardSprite
+
 @onready var card_flipper = $CardFlip
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var drop_point_detector = $DropPointDetector
 @onready var targets: Array[Node] = []
 
+var card_top_sprite: Texture
+var card_bottom_sprite: Texture
+var card_current_sprite: Texture
 var base_position: Vector2
 var is_playable: bool
 
 func _ready():
+	angle_x_max = deg_to_rad(angle_x_max)
+	angle_y_max = deg_to_rad(angle_y_max)
 	card_state_machine.init(self)
 	
 func _input(event: InputEvent) -> void:
@@ -44,9 +52,19 @@ func _set_card_sprite(value: Card) -> void:
 		await ready
 	
 	card = value
-	card_top.texture = card.card_top_sprite
-	card_bottom.texture = char_stats.card_back_sprite 
-	card_top.z_index = -1
+	card_top_sprite = card.card_top_sprite
+	card_bottom_sprite = char_stats.card_back_sprite
 	
 func card_flip():
 	card_flipper.play("card_flip")
+
+func swap_faces():
+	print_debug(card_current_sprite)
+	print_debug(card_bottom_sprite)
+	if card_current_sprite == card_bottom_sprite:
+		card_sprite.texture = card.card_top_sprite
+	
+	elif card_current_sprite == card_top_sprite:
+		card_sprite.texture = card_bottom_sprite
+	
+	card_current_sprite = card_sprite.texture

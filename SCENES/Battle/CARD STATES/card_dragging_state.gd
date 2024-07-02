@@ -4,11 +4,12 @@ const DRAG_MININUM_THRESHOLD := 0.05
 
 var minimum_drag_time_elapsed := false
 func enter() -> void:
+	
+
 	var ui_layer = get_tree().get_first_node_in_group("ui_layer")
 	
 	if ui_layer:
 		card_ui.reparent(ui_layer)
-		
 	card_ui.colour.color = Color.SKY_BLUE
 	card_ui.state.text = "DRAGGING"
 	

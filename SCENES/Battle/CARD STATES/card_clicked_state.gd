@@ -1,7 +1,12 @@
 extends CardState
 
 func enter() -> void:
-	card_ui.pivot_offset = card_ui.size/2
+	# could implement velocity based rotation here in future
+	card_ui.card_sprite.material.set_shader_parameter("x_rot", 0)
+	card_ui.card_sprite.material.set_shader_parameter("y_rot", 0)
+	
+	card_ui.rotation = 0
+
 	card_ui.colour.color = Color.ORANGE
 	card_ui.state.text = "CLICKED"
 	card_ui.drop_point_detector.monitoring = true
