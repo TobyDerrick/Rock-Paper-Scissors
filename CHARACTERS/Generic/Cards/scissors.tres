@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="Card" load_steps=7 format=3 uid="uid://b3p3cnyy3tfai"]
+[gd_resource type="Resource" script_class="Card" load_steps=6 format=3 uid="uid://b3p3cnyy3tfai"]
 
 [ext_resource type="Texture2D" uid="uid://dej2hpg8v4k7a" path="res://ART/CARDS/ScissorsCard.png" id="1_0n2uh"]
-[ext_resource type="AudioStream" uid="uid://rlv0m6mbxuao" path="res://AUDIO/SOUND EFFECTS/536782__egomassive__flip.ogg" id="1_twjr0"]
+[ext_resource type="AudioStream" uid="uid://wssv8hy6oqr4" path="res://AUDIO/SOUND EFFECTS/cardPlace1.ogg" id="1_3kegv"]
 [ext_resource type="Script" path="res://CUSTOM RESOURCES/card.gd" id="1_xkuu5"]
-[ext_resource type="AudioStream" uid="uid://bq0k00vr4e0x2" path="res://AUDIO/SOUND EFFECTS/tap.wav" id="2_5lp6l"]
-[ext_resource type="AudioStream" uid="uid://bmaroc1jofs3b" path="res://AUDIO/SOUND EFFECTS/untap.wav" id="4_pp2ci"]
-[ext_resource type="AudioStream" uid="uid://q45duylsqs2d" path="res://AUDIO/SOUND EFFECTS/playcard.wav" id="5_dh8ph"]
+[ext_resource type="AudioStream" uid="uid://b5j5cof07rd5w" path="res://AUDIO/SOUND EFFECTS/cardSlide5.ogg" id="2_me1x7"]
+[ext_resource type="AudioStream" uid="uid://dbi6vmu7nalsx" path="res://AUDIO/SOUND EFFECTS/cardSlide2.ogg" id="5_rxwkv"]
 
 [resource]
 script = ExtResource("1_xkuu5")
@@ -14,7 +13,6 @@ type = 2
 strong_to = Array[int]([1])
 weak_to = Array[int]([0])
 card_top_sprite = ExtResource("1_0n2uh")
-play_sound = ExtResource("5_dh8ph")
-card_hover_sound = ExtResource("2_5lp6l")
-card_unhover_sound = ExtResource("4_pp2ci")
-card_flip_sound = ExtResource("1_twjr0")
+play_sound = ExtResource("5_rxwkv")
+card_hover_sound = ExtResource("2_me1x7")
+card_flip_sound = ExtResource("1_3kegv")

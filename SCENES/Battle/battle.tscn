@@ -11,10 +11,10 @@
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_handler.gd" id="5_aqro0"]
 [ext_resource type="Script" path="res://SCENES/UI/battle_ui.gd" id="5_kje7m"]
 [ext_resource type="AudioStream" uid="uid://cgpvtcn6i4dwy" path="res://AUDIO/SOUND EFFECTS/misc_sound.wav" id="6_5rca6"]
-[ext_resource type="AudioStream" uid="uid://76sxyfqnuacs" path="res://AUDIO/SOUND EFFECTS/draw.wav" id="7_l5e6w"]
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_brain.gd" id="7_odcnd"]
 [ext_resource type="Script" path="res://SCENES/Battle/card_comparison_handler.gd" id="8_swy11"]
 [ext_resource type="PackedScene" uid="uid://btqxmsit8gkr5" path="res://SCENES/Battle/card_stack.tscn" id="9_1s0m1"]
+[ext_resource type="AudioStream" uid="uid://cll22s756efxv" path="res://AUDIO/SOUND EFFECTS/cardPlace3.ogg" id="9_7sjp4"]
 [ext_resource type="PackedScene" uid="uid://dr33emd6e75g1" path="res://round_results.tscn" id="10_qm023"]
 [ext_resource type="AudioStream" uid="uid://dt7bal5d65q7l" path="res://AUDIO/SOUND EFFECTS/Passturn.wav" id="11_dpuu3"]
 [ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="11_jf47l"]
@@ -105,7 +105,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.141176)
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("3_4brfb")
 hand = NodePath("../BattleUI/PlayerHand")
-draw_sound = ExtResource("7_l5e6w")
+draw_sound = ExtResource("9_7sjp4")
 
 [node name="EnemyHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("5_aqro0")

@@ -32,6 +32,7 @@ func handle_comparison():
 func reveal_next_card():		
 		if not enemy_card_stack.card_stack.is_empty():
 			var enemy_top_card: CardUI = enemy_card_stack.card_stack.front()
+			SfxPlayer.play(enemy_top_card.card.card_flip_sound)
 			enemy_top_card.card_flip()
 			
 			

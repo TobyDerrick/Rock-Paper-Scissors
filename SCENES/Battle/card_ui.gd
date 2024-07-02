@@ -49,5 +49,4 @@ func _set_card_sprite(value: Card) -> void:
 	card_top.z_index = -1
 	
 func card_flip():
-	SfxPlayer.play(card.card_flip_sound, false, true)
 	card_flipper.play("card_flip")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wssv8hy6oqr4"
+path="res://.godot/imported/cardPlace1.ogg-fb28e235f3439ff643fa3239ec87376f.oggvorbisstr"
+
+[deps]
+
+source_file="res://AUDIO/SOUND EFFECTS/cardPlace1.ogg"
+dest_files=["res://.godot/imported/cardPlace1.ogg-fb28e235f3439ff643fa3239ec87376f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

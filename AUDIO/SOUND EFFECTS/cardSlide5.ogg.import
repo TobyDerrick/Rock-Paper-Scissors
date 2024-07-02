@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b5j5cof07rd5w"
+path="res://.godot/imported/cardSlide5.ogg-1d1f53bc0e6900df133c9946a410e43e.oggvorbisstr"
+
+[deps]
+
+source_file="res://AUDIO/SOUND EFFECTS/cardSlide5.ogg"
+dest_files=["res://.godot/imported/cardSlide5.ogg-1d1f53bc0e6900df133c9946a410e43e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
