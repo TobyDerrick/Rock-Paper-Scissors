@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RunStartup" load_steps=3 format=3 uid="uid://xd8ltc14c3du"]
+
+[ext_resource type="Script" path="res://CUSTOM RESOURCES/run_startup.gd" id="1_hudk3"]
+[ext_resource type="Resource" uid="uid://q11e4r4kcvlo" path="res://CHARACTERS/Diego/diego_stats.tres" id="1_w4ris"]
+
+[resource]
+script = ExtResource("1_hudk3")
+type = 0
+character = ExtResource("1_w4ris")

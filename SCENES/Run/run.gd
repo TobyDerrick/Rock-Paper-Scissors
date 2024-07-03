@@ -7,6 +7,8 @@ const REST = preload("res://SCENES/Rest/rest.tscn")
 const SHOP = preload("res://SCENES/Shop/shop.tscn")
 const SPECIAL_EVENT = preload("res://SCENES/SpecialEvents/special_event.tscn")
 
+@export var run_startup: RunStartup
+
 @onready var current_scene = $CurrentScene
 @onready var map_button = %MapButton
 @onready var battle_button = %BattleButton
@@ -18,10 +20,16 @@ const SPECIAL_EVENT = preload("res://SCENES/SpecialEvents/special_event.tscn")
 var character: CharacterStats
 
 func _ready():
-	if not character:
-		var diego := load("res://CHARACTERS/Diego/diego_stats.tres")
-		character = diego.create_instance()
-		_start_run()
+	if not run_startup:
+		return
+	
+	match run_startup.type:
+		RunStartup.run_type.NEW_RUN:
+			character = run_startup.character.create_instance()
+			_start_run()
+		
+		RunStartup.run_type.CONTINUED_RUN:
+			print("continued runs not yet implemented")
 	
 func _start_run() -> void:
 	_setup_event_connections()

@@ -1,0 +1,229 @@
+[gd_scene load_steps=29 format=3 uid="uid://b6vnfxyv2ync"]
+
+[ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_yc7p5"]
+[ext_resource type="Resource" uid="uid://q11e4r4kcvlo" path="res://CHARACTERS/Diego/diego_stats.tres" id="2_8co80"]
+[ext_resource type="Resource" uid="uid://bkri040q46v36" path="res://CHARACTERS/ENEMIES/testEnemy.tres" id="3_qolt4"]
+[ext_resource type="AudioStream" uid="uid://doqager502rtw" path="res://AUDIO/MUSIC/Monkeys-Spinning-Monkeys(chosic.com).mp3" id="4_mc3o8"]
+[ext_resource type="AudioStream" uid="uid://bg2dxuwltk1b1" path="res://AUDIO/SOUND EFFECTS/save.wav" id="5_lw37j"]
+[ext_resource type="AudioStream" uid="uid://cgpvtcn6i4dwy" path="res://AUDIO/SOUND EFFECTS/misc_sound.wav" id="6_m5vh7"]
+[ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="7_thpma"]
+[ext_resource type="Script" path="res://SCENES/Player/player_handler.gd" id="8_qfwf1"]
+[ext_resource type="AudioStream" uid="uid://cll22s756efxv" path="res://AUDIO/SOUND EFFECTS/cardPlace3.ogg" id="9_pnpgp"]
+[ext_resource type="Script" path="res://SCENES/Battle/enemy_handler.gd" id="10_eubd3"]
+[ext_resource type="Script" path="res://SCENES/Battle/enemy_brain.gd" id="11_47x0v"]
+[ext_resource type="Script" path="res://SCENES/Battle/card_comparison_handler.gd" id="12_rbdyf"]
+[ext_resource type="AudioStream" uid="uid://dt7bal5d65q7l" path="res://AUDIO/SOUND EFFECTS/Passturn.wav" id="13_he8ur"]
+[ext_resource type="AudioStream" uid="uid://c88o8o01x3kkc" path="res://AUDIO/SOUND EFFECTS/error.wav" id="14_g04uo"]
+[ext_resource type="Script" path="res://SCENES/UI/battle_ui.gd" id="15_mgab2"]
+[ext_resource type="AudioStream" uid="uid://ddakd46xe5ww4" path="res://AUDIO/SOUND EFFECTS/#7.wav" id="16_03lqo"]
+[ext_resource type="PackedScene" uid="uid://dr33emd6e75g1" path="res://round_results.tscn" id="17_ffjay"]
+[ext_resource type="PackedScene" uid="uid://btqxmsit8gkr5" path="res://SCENES/Battle/card_stack.tscn" id="18_2ka65"]
+[ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="19_rkniq"]
+[ext_resource type="Curve" uid="uid://x38gppamsdfn" path="res://SCENES/UI/enemy_height_curve.tres" id="20_ndxg6"]
+[ext_resource type="Curve" uid="uid://cub6pbm3v7m5f" path="res://SCENES/UI/enemy_rotation_curve.tres" id="21_2v8on"]
+[ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="22_iydsk"]
+[ext_resource type="Texture2D" uid="uid://7gjm1agpcdi4" path="res://ART/UI/diegobg.png" id="23_iiwag"]
+[ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="24_jf2kh"]
+[ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="25_weu1g"]
+[ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="26_cfu6w"]
+[ext_resource type="Script" path="res://SCENES/Battle/end_battle_panel.gd" id="27_ungs8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkbsh"]
+size = Vector2(256, 102)
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_yc7p5")
+char_stats = ExtResource("2_8co80")
+enemy_stats = ExtResource("3_qolt4")
+best_of = 5.0
+music = ExtResource("4_mc3o8")
+battle_win_sound = ExtResource("5_lw37j")
+battle_loss_sound = ExtResource("6_m5vh7")
+metadata/_edit_lock_ = true
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.929715, 0.929715, 0.929715, 1)
+texture_filter = 1
+texture = ExtResource("7_thpma")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="CardDropArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+position = Vector2(128, 51)
+shape = SubResource("RectangleShape2D_qkbsh")
+debug_color = Color(0, 0.6, 0.701961, 0.141176)
+
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("8_qfwf1")
+hand = NodePath("../BattleUI/PlayerHand")
+draw_sound = ExtResource("9_pnpgp")
+
+[node name="EnemyHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("10_eubd3")
+hand = NodePath("../BattleUI/EnemyHand")
+
+[node name="EnemyBrain" type="Node" parent="EnemyHandler"]
+script = ExtResource("11_47x0v")
+
+[node name="CardComparisonHandler" type="Node" parent="." node_paths=PackedStringArray("player_card_stack", "enemy_card_stack")]
+script = ExtResource("12_rbdyf")
+player_card_stack = NodePath("../BattleUI/CardStack")
+enemy_card_stack = NodePath("../BattleUI/EnemyCardStack")
+win_sound = ExtResource("13_he8ur")
+lose_sound = ExtResource("14_g04uo")
+
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+script = ExtResource("15_mgab2")
+end_turn_sound = ExtResource("16_03lqo")
+
+[node name="RoundResults" parent="BattleUI" instance=ExtResource("17_ffjay")]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 15.0
+offset_bottom = 146.0
+
+[node name="CardStack" parent="BattleUI" instance=ExtResource("18_2ka65")]
+
+[node name="CardCounter" parent="BattleUI/CardStack" index="0"]
+offset_left = -12.0
+offset_top = 61.0
+offset_right = 28.0
+offset_bottom = 84.0
+
+[node name="Button" parent="BattleUI/CardStack" index="2"]
+visible = false
+
+[node name="EnemyCardStack" parent="BattleUI" instance=ExtResource("18_2ka65")]
+position = Vector2(146, 48)
+stack_id = "enemy_card_stack"
+
+[node name="CardCounter" parent="BattleUI/EnemyCardStack" index="0"]
+offset_left = -12.0
+offset_top = 60.0
+offset_right = 22.0
+offset_bottom = 83.0
+
+[node name="Button" parent="BattleUI/EnemyCardStack" index="2"]
+visible = false
+
+[node name="PlayerHand" parent="BattleUI" instance=ExtResource("19_rkniq")]
+offset_left = 64.0
+offset_top = 91.0
+offset_right = -92.0
+offset_bottom = -5.0
+hand_id = "hand"
+
+[node name="EnemyHand" parent="BattleUI" instance=ExtResource("19_rkniq")]
+offset_left = 65.0
+offset_top = -62.0
+offset_right = -91.0
+offset_bottom = -146.0
+hand_id = "enemy_hand"
+height_curve = ExtResource("20_ndxg6")
+rotation_curve = ExtResource("21_2v8on")
+
+[node name="EndTurn" type="Button" parent="BattleUI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -16.0
+offset_right = -2.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("22_iydsk")
+theme_override_font_sizes/font_size = 5
+text = "End Turn"
+
+[node name="Sprite2D" type="Sprite2D" parent="BattleUI"]
+position = Vector2(19, 126)
+texture = ExtResource("23_iiwag")
+
+[node name="TempPlayerSprite" type="AnimatedSprite2D" parent="BattleUI/Sprite2D"]
+sprite_frames = ExtResource("24_jf2kh")
+script = ExtResource("25_weu1g")
+
+[node name="tempborder" type="Sprite2D" parent="BattleUI/Sprite2D/TempPlayerSprite"]
+texture = ExtResource("26_cfu6w")
+
+[node name="EndGamePanel" type="Panel" parent="BattleUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_ungs8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BattleUI/EndGamePanel"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = 22.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("22_iydsk")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Win![/rainbow] [/wave] [/center]"
+fit_content = true
+scroll_active = false
+
+[node name="ClaimRewardsButton" type="Button" parent="BattleUI/EndGamePanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -5.5
+offset_right = 40.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_iydsk")
+text = "Claim Rewards"
+
+[node name="RoundScore" type="Label" parent="BattleUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_iydsk")
+text = "+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
+[connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]
+[connection signal="pressed" from="BattleUI/EndGamePanel/ClaimRewardsButton" to="BattleUI/EndGamePanel" method="_on_claim_rewards_button_pressed"]
+
+[editable path="BattleUI/CardStack"]
+[editable path="BattleUI/EnemyCardStack"]
+[editable path="BattleUI/PlayerHand"]
+[editable path="BattleUI/EnemyHand"]
