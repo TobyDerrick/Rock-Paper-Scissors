@@ -9,7 +9,6 @@ func instantiate_round_check_boxes(number_to_spawn: int) -> void:
 		add_child(this_box)
 		
 func update_round_checkbox(round_result: GlobalEnums.round_result) -> void:
-	
 	if round_result == GlobalEnums.round_result.DRAW:
 		return
 	

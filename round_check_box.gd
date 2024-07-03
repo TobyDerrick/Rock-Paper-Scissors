@@ -1,11 +1,12 @@
 class_name RoundCheckBox extends Panel
 
 var checked: bool = false
-@onready var color_rect = $ColorRect
+@onready var tick = $Tick
+@onready var cross = $Cross
 
 func set_sprite(round_result: GlobalEnums.round_result) -> void:
 	match round_result:
 		GlobalEnums.round_result.WIN:
-			color_rect.color = Color.GREEN
+			tick.visible = true
 		GlobalEnums.round_result.LOSE:
-			color_rect.color = Color.RED
+			cross.visible = true
