@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=29 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -18,67 +18,18 @@
 [ext_resource type="PackedScene" uid="uid://dr33emd6e75g1" path="res://round_results.tscn" id="10_qm023"]
 [ext_resource type="AudioStream" uid="uid://dt7bal5d65q7l" path="res://AUDIO/SOUND EFFECTS/Passturn.wav" id="11_dpuu3"]
 [ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="11_jf47l"]
-[ext_resource type="Texture2D" uid="uid://b7u7itxtw7kp0" path="res://ART/CHARACTER/Diego/boysheet.png" id="12_f4dl1"]
 [ext_resource type="AudioStream" uid="uid://c88o8o01x3kkc" path="res://AUDIO/SOUND EFFECTS/error.wav" id="12_j2d7e"]
 [ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="13_jmvpf"]
 [ext_resource type="Curve" uid="uid://x38gppamsdfn" path="res://SCENES/UI/enemy_height_curve.tres" id="13_mc1vd"]
 [ext_resource type="AudioStream" uid="uid://ddakd46xe5ww4" path="res://AUDIO/SOUND EFFECTS/#7.wav" id="14_4hm8y"]
 [ext_resource type="Curve" uid="uid://cub6pbm3v7m5f" path="res://SCENES/UI/enemy_rotation_curve.tres" id="14_ervu7"]
 [ext_resource type="Texture2D" uid="uid://7gjm1agpcdi4" path="res://ART/UI/diegobg.png" id="23_aohew"]
+[ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="24_h8oly"]
 [ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="26_j80vi"]
+[ext_resource type="Script" path="res://SCENES/Battle/end_battle_panel.gd" id="27_o3rye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkbsh"]
 size = Vector2(256, 102)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d0aw8"]
-atlas = ExtResource("12_f4dl1")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_40mg8"]
-atlas = ExtResource("12_f4dl1")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxmej"]
-atlas = ExtResource("12_f4dl1")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfqud"]
-atlas = ExtResource("12_f4dl1")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfsbt"]
-atlas = ExtResource("12_f4dl1")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j35rk"]
-atlas = ExtResource("12_f4dl1")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nuh27"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d0aw8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_40mg8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nxmej")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tfqud")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tfsbt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j35rk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 6.0
-}]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_v3pqy")
@@ -196,7 +147,7 @@ position = Vector2(19, 126)
 texture = ExtResource("23_aohew")
 
 [node name="TempPlayerSprite" type="AnimatedSprite2D" parent="BattleUI/Sprite2D"]
-sprite_frames = SubResource("SpriteFrames_nuh27")
+sprite_frames = ExtResource("24_h8oly")
 script = ExtResource("13_jmvpf")
 
 [node name="tempborder" type="Sprite2D" parent="BattleUI/Sprite2D/TempPlayerSprite"]
@@ -209,21 +160,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("27_o3rye")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BattleUI/EndGamePanel"]
 clip_contents = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -46.0
-offset_right = 60.0
-offset_bottom = -28.0
+offset_left = -63.0
+offset_top = 22.0
+offset_right = 64.0
+offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_p22m3")
 theme_override_font_sizes/normal_font_size = 12
 theme_override_font_sizes/bold_font_size = 12
@@ -234,6 +183,23 @@ bbcode_enabled = true
 text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Win![/rainbow] [/wave] [/center]"
 fit_content = true
 scroll_active = false
+
+[node name="ClaimRewardsButton" type="Button" parent="BattleUI/EndGamePanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -5.5
+offset_right = 40.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_p22m3")
+text = "Claim Rewards"
 
 [node name="RoundScore" type="Label" parent="BattleUI"]
 visible = false
@@ -255,6 +221,7 @@ vertical_alignment = 1
 
 [connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
 [connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]
+[connection signal="pressed" from="BattleUI/EndGamePanel/ClaimRewardsButton" to="BattleUI/EndGamePanel" method="_on_claim_rewards_button_pressed"]
 
 [editable path="BattleUI/CardStack"]
 [editable path="BattleUI/EnemyCardStack"]

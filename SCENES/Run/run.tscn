@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://blq2hut7djrpu"]
+
+[ext_resource type="PackedScene" uid="uid://63btavp6ev5n" path="res://SCENES/Map/map.tscn" id="1_gooa3"]
+[ext_resource type="Script" path="res://SCENES/Run/run.gd" id="1_r8782"]
+[ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_y2em5"]
+
+[node name="Run" type="Node"]
+script = ExtResource("1_r8782")
+
+[node name="Map" parent="." instance=ExtResource("1_gooa3")]
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[node name="DebugButtons" type="VBoxContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="MapButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y2em5")
+text = "Map"
+
+[node name="BattleButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y2em5")
+text = "Battle"
+
+[node name="BattleRewardsButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y2em5")
+text = "Rewards"
+
+[node name="ShopButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y2em5")
+text = "Shop"
+
+[node name="RestButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y2em5")
+text = "Rest"
+
+[node name="EventButton" type="Button" parent="DebugButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y2em5")
+text = "Event"

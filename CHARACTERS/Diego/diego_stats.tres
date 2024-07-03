@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://q11e4r4kcvlo"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://q11e4r4kcvlo"]
 
 [ext_resource type="Texture2D" uid="uid://coqmj0uird5l1" path="res://ART/CARDS/CardBacks/card_back_spotty.png" id="1_8y07y"]
 [ext_resource type="Script" path="res://CUSTOM RESOURCES/character_stats.gd" id="1_bqxct"]
 [ext_resource type="Resource" uid="uid://dj0c4h04av86r" path="res://CHARACTERS/Diego/Starting Deck/diego_starting_deck.tres" id="2_dafle"]
+[ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="2_j3q7h"]
 
 [resource]
 script = ExtResource("1_bqxct")
+character_name = "Diego"
+description = "-He likes food!
+-Awesome"
+portrait_spriteframes = ExtResource("2_j3q7h")
 starting_deck = ExtResource("2_dafle")
 card_back_sprite = ExtResource("1_8y07y")
 starting_cards = 5

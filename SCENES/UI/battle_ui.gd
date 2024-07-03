@@ -12,8 +12,6 @@ class_name BattleUI extends CanvasLayer
 @onready var end_turn_button: Button = %EndTurn
 @onready var round_results = $RoundResults
 @onready var end_game_panel = $EndGamePanel
-@onready var rich_text_label = $EndGamePanel/RichTextLabel
-
 
 func _ready():
 	Events.player_cards_drawn.connect(_on_player_cards_drawn)
@@ -53,11 +51,6 @@ func _on_finished_comparing_cards(round_result: GlobalEnums.round_result) -> voi
 	round_results.update_round_checkbox(round_result)
 
 func _handle_battle_completed(battle_result: GlobalEnums.round_result) -> void:
-	if battle_result == GlobalEnums.round_result.WIN:
-		rich_text_label.text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Win![/rainbow] [/wave] [/center]"
-	elif battle_result == GlobalEnums.round_result.LOSE:
-		rich_text_label.text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=1.0 sat=0.8 val=1.0]You Lose![/rainbow] [/wave] [/center]"
+	end_game_panel.show_battle_end_panel(battle_result)
 	end_turn_button.visible = false
 	hand.disable_cards_in_hand()
-	rich_text_label.visible = true
-	end_game_panel.visible = true

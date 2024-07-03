@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://cihhxicy7a5uv"]
+
+[ext_resource type="Texture2D" uid="uid://coqmj0uird5l1" path="res://ART/CARDS/CardBacks/card_back_spotty.png" id="1_g4kio"]
+[ext_resource type="Script" path="res://CUSTOM RESOURCES/character_stats.gd" id="1_raw35"]
+[ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="2_2877k"]
+[ext_resource type="Resource" uid="uid://dj0c4h04av86r" path="res://CHARACTERS/Diego/Starting Deck/diego_starting_deck.tres" id="4_0ligr"]
+
+[resource]
+script = ExtResource("1_raw35")
+character_name = "Suzie"
+description = "Not yet implemented"
+portrait_spriteframes = ExtResource("2_2877k")
+starting_deck = ExtResource("4_0ligr")
+card_back_sprite = ExtResource("1_g4kio")
+starting_cards = 7
+cards_per_turn = 1
+max_cards_in_stack = 5

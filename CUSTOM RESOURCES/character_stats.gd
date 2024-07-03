@@ -1,5 +1,11 @@
 class_name CharacterStats extends Stats
 
+@export_group("Metadata")
+@export var character_name: String
+@export_multiline var description: String
+@export var portrait_spriteframes: SpriteFrames
+
+@export_group("Gameplay_data")
 @export var starting_deck: CardPile
 @export var card_back_sprite: Texture
 @export var starting_cards: int

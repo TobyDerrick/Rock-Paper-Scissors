@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bq1eggg801eyp"]
+
+[ext_resource type="Texture2D" uid="uid://b7u7itxtw7kp0" path="res://ART/CHARACTER/Diego/boysheet.png" id="1_rreut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0aw8"]
+atlas = ExtResource("1_rreut")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40mg8"]
+atlas = ExtResource("1_rreut")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxmej"]
+atlas = ExtResource("1_rreut")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfqud"]
+atlas = ExtResource("1_rreut")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfsbt"]
+atlas = ExtResource("1_rreut")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j35rk"]
+atlas = ExtResource("1_rreut")
+region = Rect2(160, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0aw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40mg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxmej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfqud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfsbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j35rk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

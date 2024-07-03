@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://dm071xhghfjsv"]
+
+[ext_resource type="Texture2D" uid="uid://5ki6fmbjrjm5" path="res://ART/UI/rpstitlescree.png" id="1_goyuo"]
+[ext_resource type="Script" path="res://ART/UI/character_select.gd" id="1_t7qgq"]
+[ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_wjwbb"]
+[ext_resource type="Texture2D" uid="uid://7gjm1agpcdi4" path="res://ART/UI/diegobg.png" id="3_76gfr"]
+[ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="4_ithyd"]
+[ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="5_ek7ua"]
+[ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="6_2hatu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6eo7a"]
+font_size = 17
+font_color = Color(0.87, 0.87, 0.261, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1yrhu"]
+font_size = 10
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6ru4h"]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t7qgq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.552956, 0.552956, 0.552956, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_goyuo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.0
+offset_top = 5.0
+offset_right = 124.0
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_constants/separation = 6
+
+[node name="CharacterName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_wjwbb")
+theme_override_font_sizes/font_size = 10
+text = "Diego !
+"
+label_settings = SubResource("LabelSettings_6eo7a")
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_wjwbb")
+theme_override_font_sizes/font_size = 10
+text = "-he likes food!
+-awesome"
+label_settings = SubResource("LabelSettings_1yrhu")
+
+[node name="CharacterPortrait" type="Sprite2D" parent="."]
+position = Vector2(36, 36)
+scale = Vector2(2, 2)
+texture = ExtResource("3_76gfr")
+
+[node name="Character_Sprite" type="AnimatedSprite2D" parent="CharacterPortrait"]
+unique_name_in_owner = true
+sprite_frames = ExtResource("4_ithyd")
+script = ExtResource("5_ek7ua")
+
+[node name="tempborder" type="Sprite2D" parent="CharacterPortrait/Character_Sprite"]
+texture = ExtResource("6_2hatu")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -32.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_wjwbb")
+theme_override_font_sizes/font_size = 8
+text = "Start run"
+
+[node name="CharacterButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 110.0
+offset_right = 187.0
+offset_bottom = 142.0
+theme_override_constants/separation = 10
+
+[node name="DiegoButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_wjwbb")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ru4h")
+text = "Diego"
+
+[node name="IsaacButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_wjwbb")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ru4h")
+text = "Isaac"
+
+[node name="SuzieButton" type="Button" parent="CharacterButtons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("2_wjwbb")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6ru4h")
+text = "Suzie"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/DiegoButton" to="." method="_on_diego_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/IsaacButton" to="." method="_on_isaac_button_pressed"]
+[connection signal="pressed" from="CharacterButtons/SuzieButton" to="." method="_on_suzie_button_pressed"]

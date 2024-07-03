@@ -5,6 +5,7 @@ extends Node
 signal battle_completed(battle_result: GlobalEnums.round_result)
 signal card_used(card_used: CardUI)
 signal card_discarded(card_discarded: Card)
+signal battle_won
 
 #Player Signals
 signal player_hand_drawn
@@ -18,4 +19,16 @@ signal enemy_turn_ended
 
 #Compare Phase Signals
 signal finished_comparing_stacks(round_result: GlobalEnums.round_result)
+
+#Battle Rewards Events
+signal battle_rewards_exited
+#Map Events
+signal map_exited
+#Shop Events
+signal shop_exited
+#Rest Events
+signal rest_exited
+#Special Event Events
+signal special_event_exited
+
 

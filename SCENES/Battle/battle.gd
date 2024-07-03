@@ -45,7 +45,6 @@ func _on_finished_comparing_stacks(round_result: GlobalEnums.round_result):
 func _battle_completed(round_result: GlobalEnums.round_result):
 	if round_result == GlobalEnums.round_result.WIN:
 		SfxPlayer.play(battle_win_sound, true)
-	
 	else:
 		SfxPlayer.play(battle_loss_sound, true)
 	

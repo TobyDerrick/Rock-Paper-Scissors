@@ -12,7 +12,7 @@ func enter() -> void:
 func on_mouse_entered() -> void:
 	if card_ui.is_playable:
 		SfxPlayer.play(card_ui.card.card_hover_sound, true)
-		var tween = get_tree().create_tween() 
+		var tween = create_tween()
 		tween.tween_property(card_ui, "position", Vector2.UP * 20, 0.1).as_relative()
 
 func on_mouse_exited() -> void:
@@ -20,7 +20,7 @@ func on_mouse_exited() -> void:
 		if not is_inside_tree():
 			return
 		
-		var tween = get_tree().create_tween()
+		var tween = create_tween()
 		var target_pos = Vector2(card_ui.base_position.x, card_ui.base_position.y)
 		tween.tween_property(card_ui, "position", target_pos, 0.1)
 		card_ui.card_sprite.material.set_shader_parameter("x_rot", 0)
@@ -34,6 +34,7 @@ func on_gui_input(event: InputEvent) -> void:
 				transition_requested.emit(self, CardState.State.CLICKED)
 
 	if event is InputEventMouseMotion:
+		
 		var mouse_pos: Vector2 = card_ui.get_local_mouse_position()
 		#var diff: Vector2 = (card_ui.position + card_ui.size) - mouse_pos
 		
