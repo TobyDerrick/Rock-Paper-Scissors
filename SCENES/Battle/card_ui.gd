@@ -60,8 +60,6 @@ func card_flip():
 	card_flipper.play("card_flip")
 
 func swap_faces():
-	print_debug(card_current_sprite)
-	print_debug(card_bottom_sprite)
 	if card_current_sprite == card_bottom_sprite:
 		card_sprite.texture = card.card_top_sprite
 	

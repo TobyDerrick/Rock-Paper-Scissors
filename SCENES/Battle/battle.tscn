@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=35 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -24,6 +24,8 @@
 [ext_resource type="Curve" uid="uid://x38gppamsdfn" path="res://SCENES/UI/enemy_height_curve.tres" id="13_mc1vd"]
 [ext_resource type="AudioStream" uid="uid://ddakd46xe5ww4" path="res://AUDIO/SOUND EFFECTS/#7.wav" id="14_4hm8y"]
 [ext_resource type="Curve" uid="uid://cub6pbm3v7m5f" path="res://SCENES/UI/enemy_rotation_curve.tres" id="14_ervu7"]
+[ext_resource type="Texture2D" uid="uid://7gjm1agpcdi4" path="res://ART/UI/diegobg.png" id="23_aohew"]
+[ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="26_j80vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkbsh"]
 size = Vector2(256, 102)
@@ -189,10 +191,16 @@ theme = ExtResource("3_p22m3")
 theme_override_font_sizes/font_size = 5
 text = "End Turn"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BattleUI"]
-position = Vector2(16, 129)
+[node name="Sprite2D" type="Sprite2D" parent="BattleUI"]
+position = Vector2(19, 126)
+texture = ExtResource("23_aohew")
+
+[node name="TempPlayerSprite" type="AnimatedSprite2D" parent="BattleUI/Sprite2D"]
 sprite_frames = SubResource("SpriteFrames_nuh27")
 script = ExtResource("13_jmvpf")
+
+[node name="tempborder" type="Sprite2D" parent="BattleUI/Sprite2D/TempPlayerSprite"]
+texture = ExtResource("26_j80vi")
 
 [node name="EndGamePanel" type="Panel" parent="BattleUI"]
 visible = false
