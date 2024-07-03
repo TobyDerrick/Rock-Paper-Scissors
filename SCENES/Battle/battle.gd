@@ -20,6 +20,7 @@ func _ready():
 	var enemy_new_stats: CharacterStats = enemy_stats.create_instance()
 	battle_ui.char_stats = new_stats
 	battle_ui.enemy_stats = enemy_stats
+	battle_ui.number_of_rounds = best_of
 	start_battle(new_stats, enemy_new_stats)
 	Events.player_turn_ended.connect(enemy_handler.start_turn)
 	Events.finished_comparing_stacks.connect(player_handler.start_turn)

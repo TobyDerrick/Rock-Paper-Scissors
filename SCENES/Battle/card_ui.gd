@@ -52,8 +52,9 @@ func _set_card_sprite(value: Card) -> void:
 		await ready
 	
 	card = value
-	card_top_sprite = card.card_top_sprite
 	card_bottom_sprite = char_stats.card_back_sprite
+	print_debug(char_stats.card_back_sprite.resource_name)
+	card_top_sprite = card.card_top_sprite
 	
 func card_flip():
 	card_flipper.play("card_flip")

@@ -3,6 +3,7 @@ class_name BattleUI extends CanvasLayer
 @export var char_stats: CharacterStats : set = _set_char_stats
 @export var enemy_stats: CharacterStats :  set =  _set_enemy_stats
 @export var end_turn_sound: AudioStream
+@export var number_of_rounds: int : set = _set_number_of_rounds
 
 @onready var hand: Hand = $PlayerHand
 @onready var enemy_hand = $EnemyHand
@@ -12,6 +13,7 @@ class_name BattleUI extends CanvasLayer
 @onready var round_results = $RoundResults
 @onready var end_game_panel = $EndGamePanel
 @onready var rich_text_label = $EndGamePanel/RichTextLabel
+
 
 func _ready():
 	Events.player_cards_drawn.connect(_on_player_cards_drawn)
@@ -32,6 +34,11 @@ func _set_enemy_stats(value: CharacterStats) -> void:
 	enemy_card_stack.char_stats = enemy_stats
 	enemy_card_stack.update_card_stack_ui()
 	enemy_hand.char_stats =  enemy_stats
+	
+func _set_number_of_rounds(value: int) -> void:
+	number_of_rounds = value
+	if not round_results.get_child_count() == number_of_rounds:
+		round_results.instantiate_round_check_boxes(number_of_rounds)
 	
 func _on_player_cards_drawn() -> void:
 	end_turn_button.disabled = false

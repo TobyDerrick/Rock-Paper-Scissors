@@ -35,7 +35,7 @@ func on_gui_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		var mouse_pos: Vector2 = card_ui.get_local_mouse_position()
-		var diff: Vector2 = (card_ui.position + card_ui.size) - mouse_pos
+		#var diff: Vector2 = (card_ui.position + card_ui.size) - mouse_pos
 		
 		var lerp_val_x: float = remap(mouse_pos.x, 0.0, card_ui.size.x, 0,1)
 		var lerp_val_y: float = remap(mouse_pos.y, 0.0, card_ui.size.y, 0,1)

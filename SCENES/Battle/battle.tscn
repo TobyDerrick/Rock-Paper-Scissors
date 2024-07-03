@@ -82,6 +82,7 @@ animations = [{
 script = ExtResource("1_v3pqy")
 char_stats = ExtResource("2_n0t5f")
 enemy_stats = ExtResource("3_2ecn4")
+best_of = 5.0
 music = ExtResource("4_l8wlb")
 battle_win_sound = ExtResource("5_a11aq")
 battle_loss_sound = ExtResource("6_5rca6")
