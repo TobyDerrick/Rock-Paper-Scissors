@@ -2,6 +2,9 @@ class_name Card extends Resource
 
 enum Type {ROCK, PAPER, SCISSORS}
 
+@export_group("Metadata")
+@export_multiline var tooltip_text: String
+
 @export_group("Card Attributes")
 @export var id: String
 @export var type: Type

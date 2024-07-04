@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=31 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://bkri040q46v36" path="res://CHARACTERS/ENEMIES/testEnemy.tres" id="3_2ecn4"]
 [ext_resource type="Script" path="res://SCENES/Player/player_handler.gd" id="3_4brfb"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="3_p22m3"]
-[ext_resource type="AudioStream" uid="uid://doqager502rtw" path="res://AUDIO/MUSIC/Monkeys-Spinning-Monkeys(chosic.com).mp3" id="4_l8wlb"]
+[ext_resource type="AudioStream" uid="uid://cx7fgsydyhefu" path="res://AUDIO/MUSIC/80s Odyssey Main.wav" id="4_0abbs"]
 [ext_resource type="AudioStream" uid="uid://bg2dxuwltk1b1" path="res://AUDIO/SOUND EFFECTS/save.wav" id="5_a11aq"]
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_handler.gd" id="5_aqro0"]
 [ext_resource type="Script" path="res://SCENES/UI/battle_ui.gd" id="5_kje7m"]
@@ -27,16 +27,21 @@
 [ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="24_h8oly"]
 [ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="26_j80vi"]
 [ext_resource type="Script" path="res://SCENES/Battle/end_battle_panel.gd" id="27_o3rye"]
+[ext_resource type="PackedScene" uid="uid://bqoupx1o20k1r" path="res://SCENES/UI/show_card_pile.tscn" id="28_kuv5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkbsh"]
 size = Vector2(256, 102)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6hhcd"]
+font_size = 5
+font_color = Color(0.226707, 0.226707, 0.226707, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_v3pqy")
 char_stats = ExtResource("2_n0t5f")
 enemy_stats = ExtResource("3_2ecn4")
 best_of = 5.0
-music = ExtResource("4_l8wlb")
+music = ExtResource("4_0abbs")
 battle_win_sound = ExtResource("5_a11aq")
 battle_loss_sound = ExtResource("6_5rca6")
 metadata/_edit_lock_ = true
@@ -153,6 +158,60 @@ script = ExtResource("13_jmvpf")
 [node name="tempborder" type="Sprite2D" parent="BattleUI/Sprite2D/TempPlayerSprite"]
 texture = ExtResource("26_j80vi")
 
+[node name="RoundScore" type="Label" parent="BattleUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_p22m3")
+text = "+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrawPile" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("28_kuv5p")]
+unique_name_in_owner = true
+offset_left = 1.0
+offset_top = 90.0
+offset_right = 17.0
+offset_bottom = 110.0
+counter = NodePath("Label")
+
+[node name="Label" type="Label" parent="BattleUI/DrawPile"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 31.0
+offset_bottom = 30.0
+theme = ExtResource("3_p22m3")
+text = "99"
+label_settings = SubResource("LabelSettings_6hhcd")
+
+[node name="DiscardPile" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("28_kuv5p")]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 90.0
+offset_right = 36.0
+offset_bottom = 110.0
+counter = NodePath("Label")
+
+[node name="Label" type="Label" parent="BattleUI/DiscardPile"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 31.0
+offset_bottom = 30.0
+theme = ExtResource("3_p22m3")
+text = "99"
+label_settings = SubResource("LabelSettings_6hhcd")
+
 [node name="EndGamePanel" type="Panel" parent="BattleUI"]
 visible = false
 anchors_preset = 15
@@ -200,24 +259,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_p22m3")
 text = "Claim Rewards"
-
-[node name="RoundScore" type="Label" parent="BattleUI"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_p22m3")
-text = "+3"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
 [connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]

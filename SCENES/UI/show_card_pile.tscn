@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqoupx1o20k1r"]
+
+[ext_resource type="Texture2D" uid="uid://coqmj0uird5l1" path="res://ART/CARDS/CardBacks/card_back_spotty.png" id="1_ps38q"]
+[ext_resource type="Script" path="res://SCENES/UI/show_card_pile.gd" id="2_n2gpj"]
+
+[node name="ShowCardPile" type="TextureButton"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 20.0
+texture_normal = ExtResource("1_ps38q")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_n2gpj")

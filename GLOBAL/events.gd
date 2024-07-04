@@ -1,12 +1,12 @@
 extends Node
 
 #Battle signals
-
 signal battle_completed(battle_result: GlobalEnums.round_result)
 signal card_used(card_used: CardUI)
 signal card_discarded(card_discarded: Card)
 signal battle_won
 
+signal show_card_pile(card_pile: CardPile, pile_name: String, randomized: bool)
 #Player Signals
 signal player_hand_drawn
 signal player_cards_drawn

@@ -18,10 +18,10 @@ func _ready():
 	#TODO: move this to a seperate function when expanded into multiple battles
 	var new_stats: CharacterStats = char_stats.create_instance()
 	var enemy_new_stats: CharacterStats = enemy_stats.create_instance()
+	start_battle(new_stats, enemy_new_stats)
 	battle_ui.char_stats = new_stats
 	battle_ui.enemy_stats = enemy_stats
 	battle_ui.number_of_rounds = best_of
-	start_battle(new_stats, enemy_new_stats)
 	Events.player_turn_ended.connect(enemy_handler.start_turn)
 	Events.finished_comparing_stacks.connect(player_handler.start_turn)
 	Events.finished_comparing_stacks.connect(_on_finished_comparing_stacks)

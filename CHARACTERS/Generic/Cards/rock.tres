@@ -8,6 +8,8 @@
 
 [resource]
 script = ExtResource("1_yei0e")
+tooltip_text = "Strong against: Scissors
+Weak to: Paper"
 id = "rock_basic"
 type = 0
 strong_to = Array[int]([2])

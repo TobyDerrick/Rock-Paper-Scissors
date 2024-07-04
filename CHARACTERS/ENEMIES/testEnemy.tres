@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("1_75jnx")
+character_name = ""
+description = ""
 starting_deck = ExtResource("2_7lqnw")
 card_back_sprite = ExtResource("1_hftcu")
 starting_cards = 5

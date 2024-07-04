@@ -7,6 +7,8 @@ class_name BattleUI extends CanvasLayer
 
 @onready var hand: Hand = $PlayerHand
 @onready var enemy_hand = $EnemyHand
+@onready var draw_pile: ShowCardPile = %DrawPile
+@onready var discard_pile: ShowCardPile = %DiscardPile
 @onready var card_stack: CardStack = $CardStack
 @onready var enemy_card_stack: CardStack =  $EnemyCardStack
 @onready var end_turn_button: Button = %EndTurn
@@ -18,13 +20,16 @@ func _ready():
 	Events.finished_comparing_stacks.connect(_on_finished_comparing_cards)
 	Events.battle_completed.connect(_handle_battle_completed)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
-	
+	draw_pile.pressed.connect(func(): Events.show_card_pile.emit(char_stats.draw_pile, "Draw Pile", true))
+	discard_pile.pressed.connect(func(): Events.show_card_pile.emit(char_stats.discard, "Discard Pile", false))
 
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
 	card_stack.char_stats = char_stats
 	card_stack.update_card_stack_ui()
 	hand.char_stats = char_stats
+	draw_pile.card_pile = char_stats.draw_pile
+	discard_pile.card_pile = char_stats.discard
 	
 
 func _set_enemy_stats(value: CharacterStats) -> void:

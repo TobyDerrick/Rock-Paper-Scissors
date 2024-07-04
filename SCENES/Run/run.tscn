@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blq2hut7djrpu"]
+[gd_scene load_steps=6 format=3 uid="uid://blq2hut7djrpu"]
 
 [ext_resource type="PackedScene" uid="uid://63btavp6ev5n" path="res://SCENES/Map/map.tscn" id="1_gooa3"]
 [ext_resource type="Script" path="res://SCENES/Run/run.gd" id="1_r8782"]
 [ext_resource type="Resource" uid="uid://xd8ltc14c3du" path="res://SCENES/Run/run_startup.tres" id="2_e6esl"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_y2em5"]
+[ext_resource type="PackedScene" uid="uid://n8eatbe2oke7" path="res://SCENES/UI/card_pile_view.tscn" id="5_intby"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_r8782")
@@ -57,3 +58,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_y2em5")
 text = "Event"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CardPileView" parent="CanvasLayer" instance=ExtResource("5_intby")]
