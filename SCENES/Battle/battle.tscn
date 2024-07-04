@@ -33,8 +33,8 @@
 size = Vector2(256, 102)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6hhcd"]
-font_size = 5
-font_color = Color(0.226707, 0.226707, 0.226707, 1)
+font_size = 4
+font_color = Color(0.221077, 0.35274, 0.150835, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_v3pqy")
@@ -65,10 +65,12 @@ debug_color = Color(0, 0.6, 0.701961, 0.141176)
 script = ExtResource("3_4brfb")
 hand = NodePath("../BattleUI/PlayerHand")
 draw_sound = ExtResource("9_7sjp4")
+character_id = "stack"
 
 [node name="EnemyHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("5_aqro0")
 hand = NodePath("../BattleUI/EnemyHand")
+character_id = "enemy_card_stack"
 
 [node name="EnemyBrain" type="Node" parent="EnemyHandler"]
 script = ExtResource("7_odcnd")
@@ -186,13 +188,14 @@ counter = NodePath("Label")
 
 [node name="Label" type="Label" parent="BattleUI/DrawPile"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 14.0
-offset_right = 31.0
-offset_bottom = 30.0
+offset_left = -5.0
+offset_top = 15.0
+offset_right = 16.0
+offset_bottom = 31.0
 theme = ExtResource("3_p22m3")
 text = "99"
 label_settings = SubResource("LabelSettings_6hhcd")
+horizontal_alignment = 2
 
 [node name="DiscardPile" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("28_kuv5p")]
 unique_name_in_owner = true
@@ -204,13 +207,14 @@ counter = NodePath("Label")
 
 [node name="Label" type="Label" parent="BattleUI/DiscardPile"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 14.0
-offset_right = 31.0
-offset_bottom = 30.0
+offset_left = -5.0
+offset_top = 15.0
+offset_right = 16.0
+offset_bottom = 31.0
 theme = ExtResource("3_p22m3")
 text = "99"
 label_settings = SubResource("LabelSettings_6hhcd")
+horizontal_alignment = 2
 
 [node name="EndGamePanel" type="Panel" parent="BattleUI"]
 visible = false

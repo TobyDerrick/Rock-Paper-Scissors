@@ -4,6 +4,7 @@ const HAND_DRAW_INTERVAL:= 0.3
 
 @export var hand: Hand
 @export var draw_sound: AudioStream
+@export var character_id: String
 
 var first_draw: bool = true
 var character: CharacterStats
@@ -50,8 +51,10 @@ func draw_starting_hand(amount: int) -> void:
 	tween.finished.connect(func(): Events.player_hand_drawn.emit())
 	await tween.finished
 
-func add_card_to_discard_pile(card: CardUI):
-	character.discard.add_card(card.card)
+func add_card_to_discard_pile(card: CardUI, which_character: String):
+	if character_id == which_character: #TODO: CENTRALISE CHARACTER IDS INSTEAD OF HAVING SPECIFIC IDS FOR DIFFERENT NODES
+		print_debug("TODO: CENTRALISE CHARACTER IDS INSTEAD OF HAVING SPECIFIC IDS FOR DIFFERENT NODES")
+		character.discard.add_card(card.card)
 
 func reshuffle_deck_when_empty():
 	if not character.draw_pile.empty():

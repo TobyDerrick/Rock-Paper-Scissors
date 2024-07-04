@@ -3,7 +3,7 @@ extends Node
 #Battle signals
 signal battle_completed(battle_result: GlobalEnums.round_result)
 signal card_used(card_used: CardUI)
-signal card_discarded(card_discarded: Card)
+signal card_discarded(card_discarded: Card, character_id: String)
 signal battle_won
 
 signal show_card_pile(card_pile: CardPile, pile_name: String, randomized: bool)
