@@ -19,6 +19,7 @@ func _ready():
 	Events.player_cards_drawn.connect(_on_player_cards_drawn)
 	Events.finished_comparing_stacks.connect(_on_finished_comparing_cards)
 	Events.battle_completed.connect(_handle_battle_completed)
+	Events.card_discarded.connect(_update_discard_pile_sprite)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 	draw_pile.pressed.connect(func(): Events.show_card_pile.emit(char_stats.draw_pile, "Draw Pile", true))
 	discard_pile.pressed.connect(func(): Events.show_card_pile.emit(char_stats.discard, "Discard Pile", false))
@@ -30,6 +31,9 @@ func _set_char_stats(value: CharacterStats) -> void:
 	hand.char_stats = char_stats
 	draw_pile.card_pile = char_stats.draw_pile
 	discard_pile.card_pile = char_stats.discard
+	draw_pile.texture_normal = char_stats.card_back_sprite
+	discard_pile.texture_normal = null
+	
 	
 
 func _set_enemy_stats(value: CharacterStats) -> void:
@@ -51,6 +55,10 @@ func _on_end_turn_button_pressed() -> void:
 	SfxPlayer.play(end_turn_sound)
 	end_turn_button.disabled = true
 	Events.player_turn_ended.emit()
+
+func _update_discard_pile_sprite(card: CardUI, which_character: String) -> void:
+	if which_character == card_stack.stack_id:
+		discard_pile.texture_normal = card.card.card_top_sprite
 
 func _on_finished_comparing_cards(round_result: GlobalEnums.round_result) -> void:
 	round_results.update_round_checkbox(round_result)
