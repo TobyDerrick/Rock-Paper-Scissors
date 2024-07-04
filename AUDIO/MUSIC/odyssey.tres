@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=5 format=3 uid="uid://cmr1wdj8l6tmu"]
+
+[ext_resource type="AudioStream" uid="uid://dfd31fl0axtd2" path="res://AUDIO/MUSIC/80s Odyssey Intensity 1.wav" id="1_1ns6c"]
+[ext_resource type="Script" path="res://Ovani Plugin 1.4/OvaniSong.gd" id="1_w0hxm"]
+[ext_resource type="AudioStream" uid="uid://bh4sei5h7qpf8" path="res://AUDIO/MUSIC/80s Odyssey Intensity 2.wav" id="2_8f35j"]
+[ext_resource type="AudioStream" uid="uid://cx7fgsydyhefu" path="res://AUDIO/MUSIC/80s Odyssey Main.wav" id="3_0pqke"]
+
+[resource]
+script = ExtResource("1_w0hxm")
+Intensity1 = ExtResource("1_1ns6c")
+Intensity2 = ExtResource("2_8f35j")
+Intensity3 = ExtResource("3_0pqke")
+ReverbTail = 4.8
+SongMode = 0

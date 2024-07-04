@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bh4sei5h7qpf8"
+path="res://.godot/imported/80s Odyssey Intensity 2.wav-d1525f0835520953180c006b66e1998d.sample"
+
+[deps]
+
+source_file="res://AUDIO/MUSIC/80s Odyssey Intensity 2.wav"
+dest_files=["res://.godot/imported/80s Odyssey Intensity 2.wav-d1525f0835520953180c006b66e1998d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

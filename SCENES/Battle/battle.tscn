@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=30 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://bkri040q46v36" path="res://CHARACTERS/ENEMIES/testEnemy.tres" id="3_2ecn4"]
 [ext_resource type="Script" path="res://SCENES/Player/player_handler.gd" id="3_4brfb"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="3_p22m3"]
-[ext_resource type="AudioStream" uid="uid://cx7fgsydyhefu" path="res://AUDIO/MUSIC/80s Odyssey Main.wav" id="4_0abbs"]
 [ext_resource type="AudioStream" uid="uid://bg2dxuwltk1b1" path="res://AUDIO/SOUND EFFECTS/save.wav" id="5_a11aq"]
 [ext_resource type="Script" path="res://SCENES/Battle/enemy_handler.gd" id="5_aqro0"]
 [ext_resource type="Script" path="res://SCENES/UI/battle_ui.gd" id="5_kje7m"]
@@ -41,7 +40,6 @@ script = ExtResource("1_v3pqy")
 char_stats = ExtResource("2_n0t5f")
 enemy_stats = ExtResource("3_2ecn4")
 best_of = 5.0
-music = ExtResource("4_0abbs")
 battle_win_sound = ExtResource("5_a11aq")
 battle_loss_sound = ExtResource("6_5rca6")
 metadata/_edit_lock_ = true

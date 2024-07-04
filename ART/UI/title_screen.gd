@@ -1,7 +1,12 @@
 extends Control
 
+@export var main_song: OvaniSong
+
 const CHARACTER_SELECT = preload("res://SCENES/character_select.tscn")
 func _ready():
+	MusicPlayer.play_song(main_song)
+	MusicPlayer.fade_intensity(0, 1)
+	
 	get_tree().paused = false
 
 func _on_continue_pressed():

@@ -3,7 +3,6 @@ extends Node2D
 @export var char_stats: CharacterStats
 @export var enemy_stats: CharacterStats
 @export var best_of: float =  3
-@export var music: AudioStream
 @export var battle_win_sound: AudioStream
 @export var battle_loss_sound: AudioStream
 
@@ -28,7 +27,7 @@ func _ready():
 	Events.battle_completed.connect(_battle_completed)
 	
 func start_battle(stats: CharacterStats, enemy_char_stats: CharacterStats) -> void:
-	MusicPlayer.play(music, true)
+	MusicPlayer.fade_intensity(1, 1)
 	player_handler.start_battle(stats)
 	enemy_handler.start_battle(enemy_char_stats)
 	
