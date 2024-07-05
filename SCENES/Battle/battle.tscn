@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=29 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
-[ext_resource type="Resource" uid="uid://q11e4r4kcvlo" path="res://CHARACTERS/Diego/diego_stats.tres" id="2_n0t5f"]
 [ext_resource type="Resource" uid="uid://bkri040q46v36" path="res://CHARACTERS/ENEMIES/testEnemy.tres" id="3_2ecn4"]
 [ext_resource type="Script" path="res://SCENES/Player/player_handler.gd" id="3_4brfb"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="3_p22m3"]
@@ -37,7 +36,6 @@ font_color = Color(0.221077, 0.35274, 0.150835, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_v3pqy")
-char_stats = ExtResource("2_n0t5f")
 enemy_stats = ExtResource("3_2ecn4")
 best_of = 5.0
 battle_win_sound = ExtResource("5_a11aq")
@@ -85,10 +83,10 @@ script = ExtResource("5_kje7m")
 end_turn_sound = ExtResource("14_4hm8y")
 
 [node name="RoundResults" parent="BattleUI" instance=ExtResource("10_qm023")]
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 15.0
-offset_bottom = 146.0
+offset_left = 2.0
+offset_top = 24.0
+offset_right = 14.0
+offset_bottom = 167.0
 
 [node name="CardStack" parent="BattleUI" instance=ExtResource("9_1s0m1")]
 
@@ -178,18 +176,18 @@ vertical_alignment = 1
 
 [node name="DrawPile" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("28_kuv5p")]
 unique_name_in_owner = true
-offset_left = 1.0
-offset_top = 90.0
-offset_right = 17.0
-offset_bottom = 110.0
+offset_left = 33.0
+offset_top = 110.0
+offset_right = 49.0
+offset_bottom = 126.0
 counter = NodePath("Label")
 
 [node name="Label" type="Label" parent="BattleUI/DrawPile"]
 layout_mode = 0
 offset_left = -5.0
-offset_top = 15.0
+offset_top = 11.0
 offset_right = 16.0
-offset_bottom = 31.0
+offset_bottom = 27.0
 theme = ExtResource("3_p22m3")
 text = "99"
 label_settings = SubResource("LabelSettings_6hhcd")
@@ -197,18 +195,18 @@ horizontal_alignment = 2
 
 [node name="DiscardPile" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("28_kuv5p")]
 unique_name_in_owner = true
-offset_left = 20.0
-offset_top = 90.0
-offset_right = 36.0
-offset_bottom = 110.0
+offset_left = 33.0
+offset_top = 127.0
+offset_right = 49.0
+offset_bottom = 143.0
 counter = NodePath("Label")
 
 [node name="Label" type="Label" parent="BattleUI/DiscardPile"]
 layout_mode = 0
 offset_left = -5.0
-offset_top = 15.0
+offset_top = 11.0
 offset_right = 16.0
-offset_bottom = 31.0
+offset_bottom = 27.0
 theme = ExtResource("3_p22m3")
 text = "99"
 label_settings = SubResource("LabelSettings_6hhcd")

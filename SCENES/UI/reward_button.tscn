@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://k3blds6ggd6d"]
+
+[ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="1_e2bl2"]
+[ext_resource type="Script" path="res://SCENES/UI/reward_button.gd" id="2_cv3mw"]
+[ext_resource type="Texture2D" uid="uid://cdvwsv25i6e2t" path="res://CUSTOM RESOURCES/coin.png" id="3_g0ede"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4kjv"]
+font_size = 4
+font_color = Color(0.122252, 0.122252, 0.122252, 1)
+
+[node name="RewardButton" type="Button"]
+custom_minimum_size = Vector2(0, 13)
+offset_right = 75.0
+offset_bottom = 12.0
+theme = ExtResource("1_e2bl2")
+script = ExtResource("2_cv3mw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="RewardIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("3_g0ede")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RewardText" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_e2bl2")
+text = "placeholder"
+label_settings = SubResource("LabelSettings_p4kjv")
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

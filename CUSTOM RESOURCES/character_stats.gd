@@ -7,6 +7,7 @@ class_name CharacterStats extends Stats
 
 @export_group("Gameplay_data")
 @export var starting_deck: CardPile
+@export var draftable_cards: CardPile
 @export var card_back_sprite: Texture
 @export var starting_cards: int
 @export var cards_per_turn: int

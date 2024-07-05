@@ -6,7 +6,7 @@
 [node name="ShowCardPile" type="TextureButton"]
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
-offset_bottom = 20.0
+offset_bottom = 16.0
 texture_normal = ExtResource("1_ps38q")
 ignore_texture_size = true
 stretch_mode = 5

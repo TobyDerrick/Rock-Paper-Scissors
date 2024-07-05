@@ -43,6 +43,7 @@ func _on_visuals_gui_input(event):
 func set_card(value: Card) -> void:
 	if not is_node_ready():
 		await ready
-	
+	if not value:
+		return
 	card = value
 	card_sprite.texture = card.card_top_sprite

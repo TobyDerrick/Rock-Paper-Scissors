@@ -2,13 +2,20 @@ class_name CardPopup extends Control
 
 const CARD_MENU_UI = preload("res://SCENES/UI/card_menu_ui.tscn")
 
+@export var background_colour: Color = Color("000000b0")
+
+@onready var background = $Background
 @onready var card_zone = %Card
 @onready var card_desc = %CardDesc
+
+
 
 
 func _ready():
 	for card: CardMenuUI in card_zone.get_children():
 		card.queue_free()
+		
+	background.color = background_colour
 		
 func show_popup(card: Card) -> void:
 	var new_card := CARD_MENU_UI.instantiate() as CardMenuUI

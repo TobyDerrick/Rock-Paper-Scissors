@@ -34,7 +34,8 @@ func on_gui_input(event: InputEvent) -> void:
 				transition_requested.emit(self, CardState.State.CLICKED)
 
 	if event is InputEventMouseMotion:
-		
+		if not card_ui.is_playable:
+			return
 		var mouse_pos: Vector2 = card_ui.get_local_mouse_position()
 		#var diff: Vector2 = (card_ui.position + card_ui.size) - mouse_pos
 		

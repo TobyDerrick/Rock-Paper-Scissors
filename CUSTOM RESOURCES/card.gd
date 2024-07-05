@@ -1,6 +1,7 @@
 class_name Card extends Resource
 
 enum Type {ROCK, PAPER, SCISSORS}
+enum Rarity {COMMON, UNCOMMON, RARE}
 
 @export_group("Metadata")
 @export_multiline var tooltip_text: String
@@ -10,6 +11,7 @@ enum Type {ROCK, PAPER, SCISSORS}
 @export var type: Type
 @export var strong_to: Array[Type]
 @export var weak_to: Array[Type]
+@export var rarity: Rarity
 
 @export_group("Visuals")
 @export var card_top_sprite: Texture
