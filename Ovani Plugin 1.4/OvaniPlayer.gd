@@ -66,6 +66,8 @@ func PlaySongNow(song : OvaniSong, transitionTime : float = -1):
 			_soundManagers[0].StartTime = (_curTime - _soundManagers[0].SongLength) + _soundManagers[0].ReverbTail;
 		else:
 			_soundManagers[0].StartTime = (_curTime - _soundManagers[0].SongLength) + transitionTime;
+			
+		QueuedSongs.erase(QueuedSongs.front())
 	else:
 		QueuedSongs.append(song);
 

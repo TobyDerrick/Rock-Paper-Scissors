@@ -7,6 +7,7 @@ const SHOP = preload("res://SCENES/Shop/shop.tscn")
 const SPECIAL_EVENT = preload("res://SCENES/SpecialEvents/special_event.tscn")
 
 @export var run_startup: RunStartup
+@export var gameplay_song: OvaniSong
 
 @onready var current_scene = $CurrentScene
 @onready var map_button = %MapButton
@@ -39,7 +40,8 @@ func _start_run() -> void:
 	run_stats = RunStats.new()
 	_setup_event_connections()
 	coins_ui.run_stats = run_stats
-	MusicPlayer.fade_intensity(0.5, 1)
+	MusicPlayer.play_song(gameplay_song)
+	MusicPlayer.fade_intensity(0, 1)
 	
 	map.generate_new_map()
 	map.unlock_floor(0)

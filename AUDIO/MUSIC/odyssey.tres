@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="OvaniSong" load_steps=5 format=3 uid="uid://cmr1wdj8l6tmu"]
 
-[ext_resource type="AudioStream" uid="uid://dfd31fl0axtd2" path="res://AUDIO/MUSIC/80s Odyssey Intensity 1.wav" id="1_1ns6c"]
+[ext_resource type="AudioStream" uid="uid://c5kahcv84tjv4" path="res://AUDIO/MUSIC/Childrens Sunshine Intensity 1.wav" id="1_s7meu"]
 [ext_resource type="Script" path="res://Ovani Plugin 1.4/OvaniSong.gd" id="1_w0hxm"]
-[ext_resource type="AudioStream" uid="uid://bh4sei5h7qpf8" path="res://AUDIO/MUSIC/80s Odyssey Intensity 2.wav" id="2_8f35j"]
-[ext_resource type="AudioStream" uid="uid://cx7fgsydyhefu" path="res://AUDIO/MUSIC/80s Odyssey Main.wav" id="3_0pqke"]
+[ext_resource type="AudioStream" uid="uid://hr028xq7vdtw" path="res://AUDIO/MUSIC/Childrens Sunshine Intensity 2.wav" id="2_n66eg"]
+[ext_resource type="AudioStream" uid="uid://tjnp3v4nuqpb" path="res://AUDIO/MUSIC/Childrens Sunshine Main.wav" id="3_y1rmm"]
 
 [resource]
 script = ExtResource("1_w0hxm")
-Intensity1 = ExtResource("1_1ns6c")
-Intensity2 = ExtResource("2_8f35j")
-Intensity3 = ExtResource("3_0pqke")
-ReverbTail = 4.8
+Intensity1 = ExtResource("1_s7meu")
+Intensity2 = ExtResource("2_n66eg")
+Intensity3 = ExtResource("3_y1rmm")
+ReverbTail = 2.182
 SongMode = 0

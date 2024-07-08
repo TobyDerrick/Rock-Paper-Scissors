@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=3 format=3 uid="uid://cy03j8kcfn00n"]
+
+[ext_resource type="AudioStream" uid="uid://dicst53gxcyuh" path="res://AUDIO/MUSIC/Childrens Teddy Bear Intensity 2.wav" id="1_1t82d"]
+[ext_resource type="Script" path="res://Ovani Plugin 1.4/OvaniSong.gd" id="1_pqp07"]
+
+[resource]
+script = ExtResource("1_pqp07")
+Loop60 = ExtResource("1_1t82d")
+ReverbTail = 3.084
+SongMode = 2

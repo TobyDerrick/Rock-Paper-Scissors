@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://5ki6fmbjrjm5" path="res://ART/UI/rpstitlescree.png" id="1_ea8l6"]
 [ext_resource type="Script" path="res://ART/UI/title_screen.gd" id="1_shfhh"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_cf1kc"]
-[ext_resource type="Resource" uid="uid://cmr1wdj8l6tmu" path="res://AUDIO/MUSIC/odyssey.tres" id="2_tc0tj"]
+[ext_resource type="Resource" uid="uid://cy03j8kcfn00n" path="res://AUDIO/MUSIC/titletheme.tres" id="2_tvmqy"]
 
 [node name="TitleScreen" type="Control"]
 custom_minimum_size = Vector2(256, 144)
@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_shfhh")
-main_song = ExtResource("2_tc0tj")
+main_song = ExtResource("2_tvmqy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

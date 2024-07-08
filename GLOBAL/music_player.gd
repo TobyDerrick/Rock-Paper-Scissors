@@ -8,7 +8,8 @@ func play_song(song: OvaniSong) -> void:
 		ovani_player.QueueSong(song)
 		
 	else:
-		ovani_player.PlaySongNow(song)
+		print()
+		ovani_player.PlaySongNow(song, 0)
 		
 func fade_intensity(intensity: float, trans_time: float) -> void:
 	ovani_player.FadeIntensity(intensity, trans_time)
