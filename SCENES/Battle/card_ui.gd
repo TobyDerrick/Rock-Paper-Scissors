@@ -8,18 +8,11 @@ signal reparent_requested(which_card: CardUI, target_pos: String)
 @export var angle_x_max: float
 @export var angle_y_max: float
 
-@onready var colour: ColorRect = $Colour
-@onready var state: Label = $State
-@onready var card_sprite = $CardSprite
-
-@onready var card_flipper = $CardFlip
+@onready var card_visuals = $CardVisuals
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var drop_point_detector = $DropPointDetector
 @onready var targets: Array[Node] = []
 
-var card_top_sprite: Texture
-var card_bottom_sprite: Texture
-var card_current_sprite: Texture
 var base_position: Vector2
 var is_playable: bool
 
@@ -52,18 +45,10 @@ func _set_card_sprite(value: Card) -> void:
 		await ready
 	
 	card = value
-	card_bottom_sprite = char_stats.card_back_sprite
+	card_visuals.card = card
+	card_visuals.card_bottom_sprite = char_stats.card_back_sprite
 
-	card_top_sprite = card.card_top_sprite
+	card_visuals.card_top_sprite = card.card_top_sprite
 	
 func card_flip():
-	card_flipper.play("card_flip")
-
-func swap_faces():
-	if card_current_sprite == card_bottom_sprite:
-		card_sprite.texture = card.card_top_sprite
-	
-	elif card_current_sprite == card_top_sprite:
-		card_sprite.texture = card_bottom_sprite
-	
-	card_current_sprite = card_sprite.texture
+	card_visuals.card_flip.play("card_flip")

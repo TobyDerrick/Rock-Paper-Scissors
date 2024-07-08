@@ -5,8 +5,6 @@ func enter() -> void:
 		await card_ui.ready
 	
 	card_ui.reparent_requested.emit(card_ui, "hand")
-	card_ui.colour.color = Color.FOREST_GREEN
-	card_ui.state.text = "BASE"
 	card_ui.pivot_offset = Vector2.ZERO
 	
 func on_mouse_entered() -> void:
@@ -23,8 +21,8 @@ func on_mouse_exited() -> void:
 		var tween = create_tween()
 		var target_pos = Vector2(card_ui.base_position.x, card_ui.base_position.y)
 		tween.tween_property(card_ui, "position", target_pos, 0.1)
-		card_ui.card_sprite.material.set_shader_parameter("x_rot", 0)
-		card_ui.card_sprite.material.set_shader_parameter("y_rot", 0)
+		card_ui.card_visuals.card_sprite.material.set_shader_parameter("x_rot", 0)
+		card_ui.card_visuals.card_sprite.material.set_shader_parameter("y_rot", 0)
 
 
 func on_gui_input(event: InputEvent) -> void:
@@ -45,5 +43,5 @@ func on_gui_input(event: InputEvent) -> void:
 		var rot_x: float = rad_to_deg(lerp_angle(-card_ui.angle_x_max, card_ui.angle_x_max, lerp_val_x))
 		var rot_y: float = rad_to_deg(lerp_angle(card_ui.angle_y_max, -card_ui.angle_y_max, lerp_val_y))
 		
-		card_ui.card_sprite.material.set_shader_parameter("x_rot", rot_y)
-		card_ui.card_sprite.material.set_shader_parameter("y_rot", rot_x)
+		card_ui.card_visuals.card_sprite.material.set_shader_parameter("x_rot", rot_y)
+		card_ui.card_visuals.card_sprite.material.set_shader_parameter("y_rot", rot_x)

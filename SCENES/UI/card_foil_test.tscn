@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://daflitwg2b287"]
+
+[ext_resource type="PackedScene" uid="uid://c8i1b5cm5qr46" path="res://SCENES/UI/card_menu_ui.tscn" id="1_ginmk"]
+
+[node name="CardFoilTest" type="Node2D"]
+
+[node name="CardMenuUI" parent="." instance=ExtResource("1_ginmk")]
+offset_left = 118.0
+offset_top = 45.0
+offset_right = 150.0
+offset_bottom = 93.0

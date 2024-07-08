@@ -21,8 +21,8 @@ func add_card(card: Card) -> void:
 	new_card_ui.reparent_requested.emit(new_card_ui, hand_id)
 	new_card_ui.card = card
 	
-	new_card_ui.card_sprite.texture = new_card_ui.card_bottom_sprite
-	new_card_ui.card_current_sprite = new_card_ui.card_bottom_sprite
+	new_card_ui.card_visuals.card_sprite.texture = new_card_ui.card_visuals.card_bottom_sprite
+	new_card_ui.card_visuals.card_current_sprite = new_card_ui.card_visuals.card_bottom_sprite
 	
 	if hand_id == "hand":
 		

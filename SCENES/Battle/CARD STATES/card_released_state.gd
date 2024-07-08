@@ -3,8 +3,6 @@ extends CardState
 var played: bool
 
 func enter() -> void:
-	card_ui.colour.color = Color.HOT_PINK
-	card_ui.state.text = "RELEASED"
 	played = false
 	card_ui.pivot_offset = card_ui.size / 2
 	

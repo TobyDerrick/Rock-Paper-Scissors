@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://dltcea5i4awvm"]
+
+[ext_resource type="Script" path="res://SCENES/UI/card_visuals.gd" id="1_dicos"]
+[ext_resource type="Shader" path="res://SCENES/Battle/fake_3d.gdshader" id="1_rphoe"]
+[ext_resource type="Resource" uid="uid://c1qwjrqwilpbb" path="res://CHARACTERS/Generic/Cards/paper.tres" id="2_mxtf7"]
+[ext_resource type="Texture2D" uid="uid://dkfxyslsr4j5x" path="res://ART/CARDS/TestCard2.png" id="2_rlsan"]
+[ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="3_w6tjo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ii36"]
+resource_local_to_scene = true
+shader = ExtResource("1_rphoe")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 8.55e-06
+shader_parameter/inset = 0.133
+
+[sub_resource type="Animation" id="Animation_tcabt"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.01, 1), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swap_faces"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0hld7"]
+resource_name = "card_flip"
+length = 0.4
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(3.4822, 1, 0.34151),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.01, 1), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swap_faces"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pamb"]
+_data = {
+"RESET": SubResource("Animation_tcabt"),
+"card_flip": SubResource("Animation_0hld7")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_qlaan"]
+font_size = 3
+font_color = Color(0.489954, 0.254885, 0.0573751, 1)
+
+[node name="CardVisuals" type="Control"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dicos")
+card = ExtResource("2_mxtf7")
+
+[node name="CardSprite" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6ii36")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 24)
+texture = ExtResource("2_rlsan")
+
+[node name="CardFlip" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5pamb")
+}
+
+[node name="FoilRarityTEMP" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.0
+offset_right = 18.0
+offset_bottom = 17.0
+grow_horizontal = 2
+theme = ExtResource("3_w6tjo")
+text = "UNCOMMON"
+label_settings = SubResource("LabelSettings_qlaan")
+horizontal_alignment = 1
+vertical_alignment = 1
