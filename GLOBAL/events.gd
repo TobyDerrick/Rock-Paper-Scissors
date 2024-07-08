@@ -23,7 +23,7 @@ signal finished_comparing_stacks(round_result: GlobalEnums.round_result)
 #Battle Rewards Events
 signal battle_rewards_exited
 #Map Events
-signal map_exited
+signal map_exited(room: Room)
 #Shop Events
 signal shop_exited
 #Rest Events
