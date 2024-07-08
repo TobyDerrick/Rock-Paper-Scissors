@@ -2,7 +2,7 @@ class_name RunStats extends Resource
 
 signal coins_changed
 
-const STARTING_COINS := 50
+const STARTING_COINS := 0
 const BASE_CARD_REWARDS := 3
 const BASE_COMMON_WEIGHT := 6.0
 const BASE_UNCOMMON_WEIGHT := 3.7

@@ -76,7 +76,7 @@ func _on_battle_won() -> void:
 	var reward_scene := _change_view(BATTLE_REWARDS) as BattleRewards
 	reward_scene.run_stats = run_stats
 	reward_scene.character_stats = character
-	reward_scene.add_coin_reward(50)
+	reward_scene.add_coin_reward(2)
 	reward_scene.add_card_reward()
 func _on_map_exited() -> void:
 	pass
