@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://boisnw7fh5dud"]
 
-[ext_resource type="Script" path="res://Scenes/Rest/rest.gd" id="1_wetk0"]
+[ext_resource type="Script" path="res://SCENES/Rest/rest.gd" id="1_k4sug"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_glsud"]
 
 [node name="Rest" type="Control"]
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_wetk0")
+script = ExtResource("1_k4sug")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

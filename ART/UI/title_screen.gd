@@ -14,6 +14,8 @@ func _on_continue_pressed():
 
 
 func _on_new_run_pressed():
+	ScreenTransition.play_transition()
+	await Events.trans_out_complete
 	get_tree().change_scene_to_packed(CHARACTER_SELECT)
 
 

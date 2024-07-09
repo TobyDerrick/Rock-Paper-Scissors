@@ -4,7 +4,7 @@ enum Type {COIN, NEW_CARD}
 
 const CARD_REWARDS = preload("res://SCENES/UI/card_rewards.tscn")
 const REWARD_BUTTON = preload("res://SCENES/UI/reward_button.tscn")
-const COIN_ICON := preload("res://CUSTOM RESOURCES/coin.png")
+const COIN_ICON := preload("res://ART/UI/coinIcon.png")
 const COIN_TEXT := "%s coins"
 const CARD_ICON := preload("res://ART/CARDS/CardBacks/card_back_spotty.png")
 const CARD_TEXT := "Add New Card"
@@ -24,7 +24,7 @@ var card_rarity_weights := {
 func _ready():
 	for node in rewards.get_children():
 		node.queue_free()
-	MusicPlayer.fade_intensity(0.5, 1)
+	MusicPlayer.fade_intensity(0, 1)
 	
 func add_card_reward() -> void:
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton

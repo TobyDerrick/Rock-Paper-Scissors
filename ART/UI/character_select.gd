@@ -23,6 +23,8 @@ func _set_current_character(new_character: CharacterStats) -> void:
 	character_sprite.sprite_frames = current_character.portrait_spriteframes
 
 func _on_start_button_pressed():
+	ScreenTransition.play_transition()
+	await Events.trans_out_complete
 	run_startup.type = RunStartup.run_type.NEW_RUN
 	run_startup.character = current_character
 	get_tree().change_scene_to_packed(RUN)

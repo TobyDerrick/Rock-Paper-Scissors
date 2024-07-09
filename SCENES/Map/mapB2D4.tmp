@@ -9,13 +9,10 @@ script = ExtResource("1_403oh")
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="MapOffset" type="Node2D" parent="Visuals"]
-position = Vector2(0, 58)
-
-[node name="Lines" type="Node2D" parent="Visuals/MapOffset"]
+[node name="Lines" type="Node2D" parent="Visuals"]
 unique_name_in_owner = true
 
-[node name="Rooms" type="Node2D" parent="Visuals/MapOffset"]
+[node name="Rooms" type="Node2D" parent="Visuals"]
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

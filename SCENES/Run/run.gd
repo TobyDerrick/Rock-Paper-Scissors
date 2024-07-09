@@ -58,6 +58,9 @@ func _change_view(scene: PackedScene) -> Node:
 	return new_scene
 	
 func show_map() -> void:
+	ScreenTransition.play_transition()
+	await Events.trans_out_complete
+	
 	if current_scene.get_child_count() > 0:
 		current_scene.get_child(0).queue_free()
 	
@@ -94,6 +97,8 @@ func _on_battle_won() -> void:
 	reward_scene.add_card_reward()
 	
 func _on_map_exited(room: Room) -> void:
+	ScreenTransition.play_transition()
+	await Events.trans_out_complete
 	match room.type:
 		Room.Type.BATTLE:
 			var battle_scene := _change_view(BATTLE) as Battle

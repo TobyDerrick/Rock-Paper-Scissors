@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs6juphp720de"]
+
+[ext_resource type="Shader" path="res://circle_wipe.gdshader" id="1_hem8e"]
+[ext_resource type="Script" path="res://screen_transition.gd" id="1_r24gw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmywv"]
+shader = ExtResource("1_hem8e")
+shader_parameter/circle_size = 1.0
+
+[sub_resource type="Animation" id="Animation_e2ogs"]
+resource_name = "circle_wipe"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_pvsky"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_2ah2p"]
+resource_name = "circle_fade"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q71t7"]
+_data = {
+"RESET": SubResource("Animation_pvsky"),
+"circle_fade": SubResource("Animation_2ah2p"),
+"circle_wipe": SubResource("Animation_e2ogs")
+}
+
+[node name="SceneTransition" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_r24gw")
+
+[node name="ScreenTransition" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dmywv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_q71t7")
+}

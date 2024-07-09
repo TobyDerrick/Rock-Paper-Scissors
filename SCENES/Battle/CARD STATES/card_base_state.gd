@@ -1,5 +1,8 @@
 extends CardState
 
+var card_hoverable: bool = true
+
+
 func enter() -> void:
 	if not card_ui.is_node_ready():
 		await card_ui.ready
@@ -8,6 +11,8 @@ func enter() -> void:
 	card_ui.pivot_offset = Vector2.ZERO
 	
 func on_mouse_entered() -> void:
+	if not card_hoverable:
+		return
 	if card_ui.is_playable:
 		SfxPlayer.play(card_ui.card.card_hover_sound, true)
 		var tween = create_tween()
@@ -17,10 +22,12 @@ func on_mouse_exited() -> void:
 	if card_ui.is_playable:
 		if not is_inside_tree():
 			return
-		
+		card_hoverable = false
 		var tween = create_tween()
 		var target_pos = Vector2(card_ui.base_position.x, card_ui.base_position.y)
 		tween.tween_property(card_ui, "position", target_pos, 0.1)
+		await tween.finished
+		card_hoverable = true
 		card_ui.card_visuals.card_sprite.material.set_shader_parameter("x_rot", 0)
 		card_ui.card_visuals.card_sprite.material.set_shader_parameter("y_rot", 0)
 

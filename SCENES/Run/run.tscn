@@ -19,6 +19,7 @@ gameplay_song = ExtResource("3_m8iwm")
 [node name="CurrentScene" type="Node" parent="."]
 
 [node name="DebugButtons" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://du2eu8yn75rfw"]
 
-[ext_resource type="Script" path="res://Scenes/SpecialEvents/special_event.gd" id="1_drtbi"]
+[ext_resource type="Script" path="res://SCENES/SpecialEvents/special_event.gd" id="1_0a4b3"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_vca2q"]
 
 [node name="SpecialEvent" type="Control"]
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_drtbi")
+script = ExtResource("1_0a4b3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2dp2b2uxe8js"]
 
-[ext_resource type="Script" path="res://Scenes/Shop/shop.gd" id="1_fpgn3"]
+[ext_resource type="Script" path="res://SCENES/Shop/shop.gd" id="1_lw5h7"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_8kdad"]
 
 [node name="Shop" type="Control"]
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_fpgn3")
+script = ExtResource("1_lw5h7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

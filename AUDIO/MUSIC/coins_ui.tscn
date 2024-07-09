@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpw2w8c3narua"]
 
-[ext_resource type="Texture2D" uid="uid://cdvwsv25i6e2t" path="res://CUSTOM RESOURCES/coin.png" id="1_0yhbf"]
 [ext_resource type="Script" path="res://AUDIO/MUSIC/coins_ui.gd" id="1_jo04m"]
+[ext_resource type="Texture2D" uid="uid://ts2xrqby2mpu" path="res://ART/UI/coinIcon.png" id="2_mmvhf"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_nb3xk"]
 
 [node name="CoinsUI" type="HBoxContainer"]
@@ -14,7 +14,7 @@ script = ExtResource("1_jo04m")
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-texture = ExtResource("1_0yhbf")
+texture = ExtResource("2_mmvhf")
 expand_mode = 1
 stretch_mode = 5
 

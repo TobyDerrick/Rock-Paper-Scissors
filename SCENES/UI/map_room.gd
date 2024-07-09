@@ -4,11 +4,11 @@ signal selected(room: Room)
 
 const ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.Type.BATTLE: [preload("res://ART/CARDS/CardBacks/card_back_spotty.png"), Vector2.ZERO],
-	Room.Type.EVENT: [preload("res://ART/UI/tick.png"), Vector2.ZERO],
-	Room.Type.SHOP: [preload("res://CUSTOM RESOURCES/coin.png"), Vector2(0.25, 0.25)],
-	Room.Type.REST: [preload("res://ART/UI/style_box.png"), Vector2.ZERO],
-	Room.Type.BOSS: [preload("res://ART/CARDS/TestCard2.png"), Vector2(0.25, 0.25)]
+	Room.Type.BATTLE: [preload("res://ART/CARDS/CardBacks/card_back_spotty.png"), Vector2(-0.6,-0.6)],
+	Room.Type.EVENT: [preload("res://ART/questionmark.png"), Vector2.ZERO],
+	Room.Type.SHOP: [preload("res://ART/UI/coinIcon.png"), Vector2.ZERO],
+	Room.Type.REST: [preload("res://ART/UI/style_box.png"), Vector2(-0.6,-0.6)],
+	Room.Type.BOSS: [preload("res://ART/UI/endcross.png"), Vector2(0.25, 0.25)]
 }
 
 @onready var sprite_2d = $Visuals/Sprite2D

@@ -9,6 +9,7 @@ const MAP_LINE := preload("res://SCENES/UI/map_line.tscn")
 @onready var rooms: Node2D = %Rooms
 @onready var visuals: Node2D = $Visuals
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var map_offset = $Visuals/MapOffset
 
 var map_data: Array[Array]
 var floors_climbed: int
@@ -16,7 +17,7 @@ var last_room: Room
 var camera_edge_y: float
 
 func _ready():
-	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 1)
+	camera_edge_y = MapGenerator.Y_DIST * (MapGenerator.FLOORS - 2) - map_offset.position.y
 	
 func _input(event) -> void:
 	if event.is_action_pressed("scroll_up"):
@@ -79,8 +80,8 @@ func _connect_lines(room: Room) -> void:
 		
 	for next: Room in room.next_rooms:
 		var new_map_line := MAP_LINE.instantiate() as Line2D
-		new_map_line.add_point(room.position)
-		new_map_line.add_point(next.position)
+		new_map_line.add_point(room.position  + Vector2(2,-2))
+		new_map_line.add_point(next.position + Vector2(2,-2))
 		lines.add_child(new_map_line)
 		
 func _on_map_room_selected(room: Room) -> void:

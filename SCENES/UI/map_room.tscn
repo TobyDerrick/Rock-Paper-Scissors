@@ -1,25 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bw2t12l1pn8ai"]
 
-[ext_resource type="Texture2D" uid="uid://coqmj0uird5l1" path="res://ART/CARDS/CardBacks/card_back_spotty.png" id="1_c2tw7"]
 [ext_resource type="Script" path="res://SCENES/UI/map_room.gd" id="1_xygkr"]
+[ext_resource type="Texture2D" uid="uid://ts2xrqby2mpu" path="res://ART/UI/coinIcon.png" id="2_m68pu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p61y7"]
-
-[sub_resource type="Animation" id="Animation_nxjbr"]
-resource_name = "highlight"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-1.51572, -1.7411),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.15, 1.15)]
-}
 
 [sub_resource type="Animation" id="Animation_5t8yj"]
 length = 0.001
@@ -46,6 +30,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nxjbr"]
+resource_name = "highlight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-1.51572, -1.7411),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.15, 1.15)]
 }
 
 [sub_resource type="Animation" id="Animation_61g4c"]
@@ -94,14 +94,14 @@ script = ExtResource("1_xygkr")
 
 [node name="Line2D" type="Line2D" parent="Visuals"]
 modulate = Color(1, 1, 1, 0)
-points = PackedVector2Array(-6, 8, -14, 6, -10, -4, -4, -12, 12, -10, 10, 2, 4, 14)
+points = PackedVector2Array(0, 10, -8, 4, -4, -10, 8, -4, 10, 8)
 closed = true
 width = 1.0
 default_color = Color(0.385493, 0.385492, 0.385492, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_c2tw7")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_m68pu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p61y7")
