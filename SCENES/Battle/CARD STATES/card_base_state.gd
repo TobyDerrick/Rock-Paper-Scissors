@@ -16,7 +16,7 @@ func on_mouse_entered() -> void:
 	if card_ui.is_playable:
 		SfxPlayer.play(card_ui.card.card_hover_sound, true)
 		var tween = create_tween()
-		tween.tween_property(card_ui, "position", Vector2.UP * 20, 0.1).as_relative()
+		tween.tween_property(card_ui, "global_position", Vector2.UP * 20, 0.1).as_relative()
 
 func on_mouse_exited() -> void:
 	if card_ui.is_playable:

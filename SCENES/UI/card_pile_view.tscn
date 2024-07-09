@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://n8eatbe2oke7"]
+[gd_scene load_steps=7 format=3 uid="uid://n8eatbe2oke7"]
 
 [ext_resource type="Script" path="res://SCENES/UI/card_pile_view.gd" id="1_5ouxc"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="1_bdplf"]
 [ext_resource type="PackedScene" uid="uid://c8i1b5cm5qr46" path="res://SCENES/UI/card_menu_ui.tscn" id="2_ntw85"]
+[ext_resource type="Script" path="res://SCENES/audio_button.gd" id="4_nlwcn"]
 [ext_resource type="PackedScene" uid="uid://cixtdt1ar76m7" path="res://SCENES/UI/card_popup.tscn" id="4_vunbj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h7ed3"]
@@ -134,6 +135,7 @@ grow_horizontal = 0
 theme = ExtResource("1_bdplf")
 theme_override_font_sizes/font_size = 8
 text = "Return"
+script = ExtResource("4_nlwcn")
 
 [node name="CardPopup" parent="." instance=ExtResource("4_vunbj")]
 unique_name_in_owner = true

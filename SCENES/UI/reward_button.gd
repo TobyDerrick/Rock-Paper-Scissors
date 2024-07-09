@@ -1,4 +1,4 @@
-class_name RewardButton extends Button
+class_name RewardButton extends AudioButton
 
 @export var this_reward_icon: Texture :  set = set_reward_icon
 @export var this_reward_text: String : set = set_reward_text

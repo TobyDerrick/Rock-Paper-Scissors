@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct27qgssuduvo"]
+[gd_scene load_steps=9 format=3 uid="uid://ct27qgssuduvo"]
 
 [ext_resource type="Script" path="res://SCENES/UI/card_rewards.gd" id="1_1sblk"]
 [ext_resource type="PackedScene" uid="uid://c8i1b5cm5qr46" path="res://SCENES/UI/card_menu_ui.tscn" id="1_18j4e"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://1m6ptlcuuxwg" path="res://CHARACTERS/Generic/Cards/rock.tres" id="3_6vwrx"]
 [ext_resource type="PackedScene" uid="uid://cixtdt1ar76m7" path="res://SCENES/UI/card_popup.tscn" id="3_7p8e1"]
 [ext_resource type="Resource" uid="uid://b3p3cnyy3tfai" path="res://CHARACTERS/Generic/Cards/scissors.tres" id="4_kdn2m"]
+[ext_resource type="Script" path="res://SCENES/audio_button.gd" id="7_4xrwr"]
 
 [node name="CardRewards" type="ColorRect"]
 anchors_preset = 15
@@ -53,6 +54,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_27i0t")
 text = "Skip Cards"
+script = ExtResource("7_4xrwr")
 
 [node name="CardPopup" parent="." instance=ExtResource("3_7p8e1")]
 visible = false
@@ -76,3 +78,4 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_27i0t")
 text = "Take Card"
+script = ExtResource("7_4xrwr")
