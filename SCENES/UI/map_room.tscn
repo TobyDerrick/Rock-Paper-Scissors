@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw2t12l1pn8ai"]
+[gd_scene load_steps=10 format=3 uid="uid://bw2t12l1pn8ai"]
 
 [ext_resource type="Script" path="res://SCENES/UI/map_room.gd" id="1_xygkr"]
 [ext_resource type="Texture2D" uid="uid://ts2xrqby2mpu" path="res://ART/UI/coinIcon.png" id="2_m68pu"]
+[ext_resource type="AudioStream" uid="uid://c78cldixfclcm" path="res://AUDIO/SOUND EFFECTS/button_sound/GenericButton6.wav" id="2_nv6l2"]
+[ext_resource type="AudioStream" uid="uid://c3qu2f8qksrc6" path="res://AUDIO/SOUND EFFECTS/button_sound/GenericNotification11.wav" id="3_tc8iu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p61y7"]
 
@@ -89,6 +91,8 @@ _data = {
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_xygkr")
+hover_audio = ExtResource("2_nv6l2")
+press_audio = ExtResource("3_tc8iu")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -112,3 +116,4 @@ libraries = {
 }
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

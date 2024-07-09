@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://20mqrhj8wfqg"]
+[gd_scene load_steps=6 format=3 uid="uid://20mqrhj8wfqg"]
 
 [ext_resource type="Texture2D" uid="uid://5ki6fmbjrjm5" path="res://ART/UI/rpstitlescree.png" id="1_ea8l6"]
 [ext_resource type="Script" path="res://ART/UI/title_screen.gd" id="1_shfhh"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_cf1kc"]
 [ext_resource type="Resource" uid="uid://cy03j8kcfn00n" path="res://AUDIO/MUSIC/titletheme.tres" id="2_tvmqy"]
+[ext_resource type="Script" path="res://SCENES/audio_button.gd" id="5_d8qpb"]
 
 [node name="TitleScreen" type="Control"]
 custom_minimum_size = Vector2(256, 144)
@@ -23,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_ea8l6")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -34,12 +36,12 @@ anchor_right = 0.5
 offset_left = -48.0
 offset_top = 10.0
 offset_right = 49.0
-offset_bottom = 49.0
+offset_bottom = 27.0
 grow_horizontal = 2
 theme = ExtResource("2_cf1kc")
 theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
-text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=0.5 sat=0.8 val=1.0]ROCK paPER scissors caRd GAME![/rainbow] [/wave] [/center]"
+text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=0.5 sat=0.8 val=1.0]REALLY COOL ROCK PAPER SCISSORDS CARD GAME![/rainbow] [/wave] [/center]"
 fit_content = true
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -55,22 +57,26 @@ offset_right = 34.0
 offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 6
 
 [node name="Continue" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = ExtResource("2_cf1kc")
 text = "CONTINUE"
+script = ExtResource("5_d8qpb")
 
 [node name="NewRun" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = ExtResource("2_cf1kc")
 text = "NEW RUN"
+script = ExtResource("5_d8qpb")
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = ExtResource("2_cf1kc")
 text = "Quit"
+script = ExtResource("5_d8qpb")
 
 [connection signal="pressed" from="Buttons/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Buttons/NewRun" to="." method="_on_new_run_pressed"]

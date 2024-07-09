@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dm071xhghfjsv"]
+[gd_scene load_steps=13 format=3 uid="uid://dm071xhghfjsv"]
 
 [ext_resource type="Texture2D" uid="uid://5ki6fmbjrjm5" path="res://ART/UI/rpstitlescree.png" id="1_goyuo"]
 [ext_resource type="Script" path="res://ART/UI/character_select.gd" id="1_t7qgq"]
@@ -8,6 +8,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="4_ithyd"]
 [ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="5_ek7ua"]
 [ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="6_2hatu"]
+[ext_resource type="Script" path="res://SCENES/audio_button.gd" id="9_owwm6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6eo7a"]
 font_size = 17
@@ -97,6 +98,7 @@ grow_vertical = 0
 theme = ExtResource("2_wjwbb")
 theme_override_font_sizes/font_size = 8
 text = "Start run"
+script = ExtResource("9_owwm6")
 
 [node name="CharacterButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -113,6 +115,7 @@ theme = ExtResource("2_wjwbb")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ru4h")
 text = "Diego"
+script = ExtResource("9_owwm6")
 
 [node name="IsaacButton" type="Button" parent="CharacterButtons"]
 custom_minimum_size = Vector2(32, 32)
@@ -121,6 +124,7 @@ theme = ExtResource("2_wjwbb")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ru4h")
 text = "Isaac"
+script = ExtResource("9_owwm6")
 
 [node name="SuzieButton" type="Button" parent="CharacterButtons"]
 custom_minimum_size = Vector2(32, 32)
@@ -129,6 +133,7 @@ theme = ExtResource("2_wjwbb")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_6ru4h")
 text = "Suzie"
+script = ExtResource("9_owwm6")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CharacterButtons/DiegoButton" to="." method="_on_diego_button_pressed"]

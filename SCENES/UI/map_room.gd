@@ -15,6 +15,9 @@ const ICONS := {
 @onready var line_2d = $Visuals/Line2D
 @onready var animation_player = $AnimationPlayer
 
+@export var hover_audio: AudioStream
+@export var press_audio: AudioStream
+
 var available := false : set = set_available
 var room: Room : set = set_room
 
@@ -43,8 +46,14 @@ func _on_input_event(viewport, event, shape_idx):
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
 		
+	SfxPlayer.play(press_audio)
 	room.selected = true
 	animation_player.play("select")
 	
 func _on_map_room_selected() -> void:
 	selected.emit(room)
+
+
+func _on_mouse_entered():
+	if not available: return
+	SfxPlayer.play(hover_audio)

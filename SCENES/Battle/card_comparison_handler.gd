@@ -6,7 +6,7 @@ const COMPARISON_INTERVAL := 1.25
 @export var enemy_card_stack: CardStack
 @export var win_sound: AudioStream
 @export var lose_sound: AudioStream
-
+@export var draw_sound: AudioStream
 @onready var round_score = $"../BattleUI/RoundScore"
 
 enum hand_comparison_results{WIN, LOSE, DRAW}
@@ -65,7 +65,7 @@ func compare_next_card():
 				comparison_score -= 1
 			
 			hand_comparison_results.DRAW:
-				pass
+				SfxPlayer.play(draw_sound)
 				
 
 func compare_cards(card1, card2) -> hand_comparison_results:

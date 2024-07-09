@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dgsfi8m4vlt2b"]
+[gd_scene load_steps=31 format=3 uid="uid://dgsfi8m4vlt2b"]
 
 [ext_resource type="Texture2D" uid="uid://caowmxj5dcnyo" path="res://ART/UI/bg.png" id="1_72f6t"]
 [ext_resource type="Script" path="res://SCENES/Battle/battle.gd" id="1_v3pqy"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dt7bal5d65q7l" path="res://AUDIO/SOUND EFFECTS/Passturn.wav" id="11_dpuu3"]
 [ext_resource type="PackedScene" uid="uid://b8t8fays7hbxx" path="res://card_fanner.tscn" id="11_jf47l"]
 [ext_resource type="AudioStream" uid="uid://c88o8o01x3kkc" path="res://AUDIO/SOUND EFFECTS/error.wav" id="12_j2d7e"]
+[ext_resource type="AudioStream" uid="uid://cc1vqwo0k3iby" path="res://AUDIO/SOUND EFFECTS/Error5.wav" id="12_unlsj"]
 [ext_resource type="Script" path="res://SCENES/Battle/start_animation.gd" id="13_jmvpf"]
 [ext_resource type="Curve" uid="uid://x38gppamsdfn" path="res://SCENES/UI/enemy_height_curve.tres" id="13_mc1vd"]
 [ext_resource type="AudioStream" uid="uid://ddakd46xe5ww4" path="res://AUDIO/SOUND EFFECTS/#7.wav" id="14_4hm8y"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://7gjm1agpcdi4" path="res://ART/UI/diegobg.png" id="23_aohew"]
 [ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="24_h8oly"]
 [ext_resource type="Texture2D" uid="uid://nnh7klix5sgv" path="res://ART/UI/tempborder.png" id="26_j80vi"]
+[ext_resource type="Script" path="res://SCENES/audio_button.gd" id="27_jpklo"]
 [ext_resource type="Script" path="res://SCENES/Battle/end_battle_panel.gd" id="27_o3rye"]
 [ext_resource type="PackedScene" uid="uid://bqoupx1o20k1r" path="res://SCENES/UI/show_card_pile.tscn" id="28_kuv5p"]
 
@@ -77,6 +79,7 @@ player_card_stack = NodePath("../BattleUI/CardStack")
 enemy_card_stack = NodePath("../BattleUI/EnemyCardStack")
 win_sound = ExtResource("11_dpuu3")
 lose_sound = ExtResource("12_j2d7e")
+draw_sound = ExtResource("12_unlsj")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("5_kje7m")
@@ -259,6 +262,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_p22m3")
 text = "Claim Rewards"
+script = ExtResource("27_jpklo")
 
 [connection signal="card_added_to_hand" from="BattleUI/PlayerHand" to="BattleUI/CardStack" method="_on_player_hand_card_added_to_hand"]
 [connection signal="card_added_to_hand" from="BattleUI/EnemyHand" to="BattleUI/EnemyCardStack" method="_on_enemy_hand_card_added_to_hand"]
