@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://b73ih20jtndvu"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://b73ih20jtndvu"]
 
 [ext_resource type="Script" path="res://CUSTOM RESOURCES/character_stats.gd" id="1_dfkx6"]
 [ext_resource type="Texture2D" uid="uid://coqmj0uird5l1" path="res://ART/CARDS/CardBacks/card_back_spotty.png" id="1_m70ex"]
 [ext_resource type="SpriteFrames" uid="uid://bq1eggg801eyp" path="res://ART/CHARACTER/Diego/diegoanim.tres" id="2_i12w5"]
+[ext_resource type="Resource" uid="uid://dlyc24pgcskla" path="res://CHARACTERS/Diego/diego_draftable_cards.tres" id="2_u8cmh"]
 [ext_resource type="Resource" uid="uid://dj0c4h04av86r" path="res://CHARACTERS/Diego/Starting Deck/diego_starting_deck.tres" id="4_7ebon"]
 
 [resource]
@@ -11,6 +12,7 @@ character_name = "Isaac"
 description = "Not yet implemented"
 portrait_spriteframes = ExtResource("2_i12w5")
 starting_deck = ExtResource("4_7ebon")
+draftable_cards = ExtResource("2_u8cmh")
 card_back_sprite = ExtResource("1_m70ex")
 starting_cards = 3
 cards_per_turn = 5

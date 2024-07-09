@@ -29,6 +29,7 @@ func start_turn(_prev_round_win_state: GlobalEnums.round_result = GlobalEnums.ro
 	hand.enable_cards_in_hand()
 	
 func draw_card() -> void:
+	if character.draw_pile.empty() and character.discard.empty(): return
 	reshuffle_deck_when_empty()
 	SfxPlayer.play(draw_sound, false, true)
 	hand.add_card(character.draw_pile.draw_card())
