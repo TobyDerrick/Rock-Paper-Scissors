@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://djv1kvhc7cyhj"]
+
+[ext_resource type="Texture2D" uid="uid://c687tkjgigcxk" path="res://ART/CHARACTER/Suzie/suzietest.png" id="1_f4bxg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f4bxg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -153,6 +153,7 @@ position = Vector2(19, 126)
 texture = ExtResource("23_aohew")
 
 [node name="TempPlayerSprite" type="AnimatedSprite2D" parent="BattleUI/Sprite2D"]
+unique_name_in_owner = true
 sprite_frames = ExtResource("24_h8oly")
 script = ExtResource("13_jmvpf")
 

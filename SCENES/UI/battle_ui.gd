@@ -14,6 +14,7 @@ class_name BattleUI extends CanvasLayer
 @onready var end_turn_button: Button = %EndTurn
 @onready var round_results = $RoundResults
 @onready var end_game_panel = $EndGamePanel
+@onready var temp_player_sprite = %TempPlayerSprite
 
 func _ready():
 	Events.player_cards_drawn.connect(_on_player_cards_drawn)
@@ -33,6 +34,7 @@ func _set_char_stats(value: CharacterStats) -> void:
 	discard_pile.card_pile = char_stats.discard
 	draw_pile.texture_normal = char_stats.card_back_sprite
 	discard_pile.texture_normal = null
+	temp_player_sprite.sprite_frames = char_stats.portrait_spriteframes
 	
 	
 

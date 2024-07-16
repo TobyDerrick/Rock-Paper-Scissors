@@ -64,7 +64,7 @@ func _show_card_rewards() -> void:
 		for rarity: Card.Rarity in card_rarity_weights:
 			if card_rarity_weights[rarity] > roll:
 				_modify_weights(rarity)
-				var picked_card := _get_random_available_card(available_cards)
+				var picked_card := _get_random_available_card(available_cards).duplicate()
 				picked_card.rarity = rarity
 				reward_array.append(picked_card)
 				break

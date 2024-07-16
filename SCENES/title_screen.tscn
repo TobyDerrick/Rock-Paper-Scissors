@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://20mqrhj8wfqg"]
+[gd_scene load_steps=9 format=3 uid="uid://20mqrhj8wfqg"]
 
-[ext_resource type="Texture2D" uid="uid://5ki6fmbjrjm5" path="res://ART/UI/rpstitlescree.png" id="1_ea8l6"]
 [ext_resource type="Script" path="res://ART/UI/title_screen.gd" id="1_shfhh"]
 [ext_resource type="Theme" uid="uid://dix4diah23n6u" path="res://FONTS AND THEMES/mainTheme.tres" id="2_cf1kc"]
 [ext_resource type="Resource" uid="uid://cy03j8kcfn00n" path="res://AUDIO/MUSIC/titletheme.tres" id="2_tvmqy"]
+[ext_resource type="Shader" path="res://SCENES/scroll.gdshader" id="3_wjbpk"]
+[ext_resource type="Texture2D" uid="uid://b73l1l42y68d" path="res://ART/UI/scrollingbg.png" id="4_7te0s"]
 [ext_resource type="Script" path="res://SCENES/audio_button.gd" id="5_d8qpb"]
+[ext_resource type="StyleBox" uid="uid://mo2puc24kaq8" path="res://ART/UI/basic_style_box.tres" id="6_6v7fg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uclxx"]
+shader = ExtResource("3_wjbpk")
+shader_parameter/scroll_speed = 0.05
 
 [node name="TitleScreen" type="Control"]
 custom_minimum_size = Vector2(256, 144)
@@ -18,6 +24,8 @@ script = ExtResource("1_shfhh")
 main_song = ExtResource("2_tvmqy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_uclxx")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +33,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_ea8l6")
+texture = ExtResource("4_7te0s")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TitleText" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 4.0
+offset_right = 49.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme = ExtResource("2_cf1kc")
+theme_override_styles/panel = ExtResource("6_6v7fg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 clip_contents = false
@@ -36,12 +59,12 @@ anchor_right = 0.5
 offset_left = -48.0
 offset_top = 10.0
 offset_right = 49.0
-offset_bottom = 27.0
+offset_bottom = 62.0
 grow_horizontal = 2
 theme = ExtResource("2_cf1kc")
 theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
-text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=0.5 sat=0.8 val=1.0]REALLY COOL ROCK PAPER SCISSORDS CARD GAME![/rainbow] [/wave] [/center]"
+text = "[center][wave amp=20.0 freq=8.0 connected=1][rainbow freq=0.5 sat=0.8 val=1.0]REALLY COOL ROCK PAPER SCISSORS CARD GAME![/rainbow] [/wave] [/center]"
 fit_content = true
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -52,9 +75,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -33.0
-offset_top = -71.0
+offset_top = -60.0
 offset_right = 34.0
-offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
